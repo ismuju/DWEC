@@ -7,6 +7,7 @@ git add .  <-- COGE LO QUE HA CAMBIADO
 git commit -m "" <-- CONFIRMA
 git push <-- LO SUBE
 
+MODIFICADO DESDE ATOM
 
 Remoto a local
 git pull
