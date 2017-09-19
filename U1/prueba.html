@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Javascript</title>
-    <script type="text/javascript">
+    <script type="text/javascript"> //MEJOR PONERLO EN HEADER
       //Comentario
       /*
         Más comentarios
@@ -11,8 +11,20 @@
       var t = "Esto es un texto";
     </script>
     <script src="js/mensaje.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      var nom = prompt("Dime tu nombre"); //RECOGER VARIABLES
+      alert(nom);
+    </script>
+    <noscript> <!-- SI NO TIENE HABILITADO ELJAVASCRIPT -->
+      <h1>HABILITA TU NAVEGADOR EL JS</h1>
+    </noscript>
+
+
   </head>
   <body>
+    <h1 onclick="alert('YEPA!');">DAME UN CLICK</h1> <!-- INTERCALAR COMILLAS "" Y ''-->
+
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </body>
 </html>
