@@ -1,3 +1,7 @@
 var men = prompt("Dime algo y te lo enseño por consola.");
 
-var fondo = prompt("Dime un color.");
+function cambiarFondo () {
+  var fondo = prompt("Dime un color.");
+
+  document.bgColor = fondo;
+}
