@@ -7,11 +7,11 @@
 // console.log(z);
 //
 // //Cuando activamos use strict debemos declarar variables o da error:
-"use strict";
-var x = 2;
-var y = 3;
-z = x + y;
-console.log(z);
+// "use strict";
+// var x = 2;
+// var y = 3;
+// z = x + y;
+// console.log(z);
 //
 //
 //
