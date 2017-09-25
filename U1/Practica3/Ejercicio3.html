@@ -6,10 +6,15 @@
     <script type="text/javascript">
       var num = prompt("Dime un número");
 
+      while (isNaN(num)){
+        num = prompt("-- ERROR -- Introduce un número");
+      }
+
+
       if( num%2 == 0){
-        document.write("Es par");
+        document.write("<h1><center>Es par</center></h1>");
       } else {
-        document.write("Es impar");
+        document.write("<h1><center>Es impar</center></h1>");
       }
     </script>
 

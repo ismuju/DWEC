@@ -5,14 +5,18 @@
     <title>Ejercicio 4</title>
     <script type="text/javascript">
       var ano = prompt("Dime en que año naciste");
+      while (ano < 0 || ano == 0 || isNaN(ano)){
+        ano = prompt("-- ERROR -- Introduce año correctamente: ");
+      }
+
       var d = new Date();
       var n = d.getFullYear();
 
 
       if( (n-ano) >= 18){
-        document.write("Eres mayor de edad");
+        document.write("<h1><center>Eres mayor de edad</center></h1>");
       } else {
-        document.write("Eres menor de edad");
+        document.write("<h1><center>Eres menor de edad</center></h1>");
       }
     </script>
 

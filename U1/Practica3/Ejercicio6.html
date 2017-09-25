@@ -6,8 +6,13 @@
     <script type="text/javascript">
       var numero = prompt("¿Qué tabla de multiplicar quieres aprender?");
 
+      while (numero < 0 || isNaN(numero)){
+        numero = prompt("-- ERROR -- Introduce número correcto ");
+      }
+
+      document.write("<center><h1>Tabla del " + numero + "</h1><center>");
       for (var i = 0; i <= 10; i++) {
-        document.write("<p>" + i + " * " + numero + " = " + numero*i + "</p>");
+        document.write("<center><p>" + i + " * " + numero + " = " + numero*i + "</p></center>");
       }
 
 

@@ -3,17 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>Ejercicio 8</title>
-    
 
+    <script type="text/javascript">
+      function precioRebaja(precio, rebaja) {
+        var rebaja = (precio * rebaja) / 100;
+        var pagar = precio - rebaja;
+        return pagar;
+      }
+    </script>
 
     <script type="text/javascript">
       var precio = prompt("Dime el precio: ");
-      var precio = prompt("Dime el porcentaje: ");
 
+      while (precio < 0 || precio == 0 || isNaN(precio)){
+        precio = prompt("-- ERROR -- Introduce precio correctamente: ");
+      }
 
+      var rebaja = prompt("Dime el porcentaje de la rebaja: ");
+
+      document.write("<h1><center> El coste inicial del producto son <b>" + precio + "€</b> con una rebaja del <b>" + rebaja + "%</b>, te sale a pagar <b>" + precioRebaja(precio,rebaja) + "€ </b></center></h1>");
 
     </script>
-
 
   </head>
   <body>
