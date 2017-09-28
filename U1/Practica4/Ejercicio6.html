@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 6</title>
+    <script type="text/javascript">
+
+
+
+      var datos = ['Frío', 33, false, 'nube', -11.22, true, 3.33, 'variado', "ismael", 15];
+
+      document.write("<br><br><b>ARRAY 1</b><br>");
+
+      for (var i = 0; i < datos.length; i++) {
+        document.write("<b>Indice:</b> " + i + " <b>Contenido:</b> " + datos[i] + "<b> Tipo de dato:</b> " + typeof(datos[i]) + "<br>");
+      }
+      document.write("<b>Longitud del Array:</b> " + datos.length);
+
+      document.write("<br><br><b>ARRAY 2</b><br>");
+      var backup = [];
+      var cont = 0;
+      for (var i = 0; i < datos.length; i++) {
+        if (!isNaN(Number(datos[i]))){
+          backup[cont] = Number(datos[i]);
+          document.write("<b>Indice: </b>" + cont + " <b>Contenido:</b> " + backup[cont] + "<br>");
+          cont++;
+        }
+      }
+      document.write("<b>Longitud del Array:</b> " + backup.length);
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
