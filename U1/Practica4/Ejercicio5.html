@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5</title>
+    <script type="text/javascript">
+
+
+      function calculadora(){
+        var resultado = 0;
+        //OPCION
+        var opcion = prompt("Introduce una opción: (1 al 4)");
+        while (opcion <= 0 || opcion > 4 || isNaN(opcion)) {
+          var opcion = prompt("Opción incorrecta. Vuelva a introducir.");
+        }
+        opcion = parseInt(opcion);
+
+        //NUMERO 1
+        var numero1 = prompt("Número 1:");
+        while (isNaN(numero1)) {
+          var numero1 = prompt("ERROR. Introduce un número.");
+        }
+        numero1 = parseInt(numero1);
+
+        //NUMERO 2
+        var numero2 = prompt("Número 2:");
+        while (isNaN(numero2)) {
+          var numero2 = prompt("ERROR. Introduce un número.");
+        }
+        numero2 = parseInt(numero2);
+
+        //MENU
+        switch (opcion) {
+          case 1:
+            resultado = numero1 + numero2;
+            alert("Resultado de sumar " + numero1 + " + " + numero2 + " es " + resultado);
+            break;
+          case 2:
+            resultado = numero1 - numero2;
+            alert("Resultado de restar " + numero1 + " - " + numero2 + " es " + resultado);
+            break;
+          case 3:
+            resultado = numero1 * numero2;
+            alert("Resultado de multiplicar " + numero1 + " * " + numero2 + " es " + resultado);
+            break;
+          case 4:
+            resultado = numero1 / numero2;
+            if (isFinite(resultado)){
+              alert("Resultado de división " + numero1 + " / " + numero2 + " es " + resultado);
+            }else{
+              alert("ERROR: RESULTADO INFINITO");
+            }
+            break;
+          default:
+            alert("Error vuelva a probar.");
+        }
+
+      }
+
+    </script>
+  </head>
+  <body>
+    <table border=0  align=center>
+      <tr>
+        <td align=center><h1>Calculadora</h1></td>
+      </tr>
+      <tr>
+        <td align=center>Elige una de las siguientes opciones:</td>
+      </tr>
+      <tr><td>
+        <ol><h2>
+          <li> Sumar </li>
+          <li> Restar </li>
+          <li> Multiplicar </li>
+          <li> Dividir </li>
+        </h2></ol></td>
+      </tr>
+
+      <tr><td align=center><button onclick="calculadora();">ELEGIR</button></td></tr>
+
+  </body>
+</html>

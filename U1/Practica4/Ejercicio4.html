@@ -4,28 +4,32 @@
     <meta charset="utf-8">
     <title>Ejercicio 4</title>
     <script type="text/javascript">
-
-      var cadena1 = prompt("Dime cadena1");
-      var cadena2 = prompt("Dime cadena2");
-
+      //SI QUIERES QUE LO INTRODUZCA EL USUARIO. CAMBIAR TAMBIÉN LA LLAMADA A LA FUNCIÓN
+      //var cadena1 = prompt("Dime cadena1");
+      //var cadena2 = prompt("Dime cadena2");
 
       function compararCadenas(cadena1, cadena2 ){
-
-        if (typeof(cadena1) !== "string" && typeof(cadena2) !== "string"){
-          return "<h1><center>ERROR</center></h1>";
-        }else {
-          if (cadena1.length > cadena2.length) {
-            return "<h1><center>" + cadena1 + "</center></h1>";
-          } else {
-            return "<h1><center>" + cadena2 + "</center></h1>";
-          }
+        if (!isNaN(cadena1)){
+          cadena1 = parseInt(cadena1);
+        }else if (!isNaN(cadena2)) {
+          cadena2 = parseInt(cadena2);
         }
 
 
-
+        if (typeof(cadena1) !== "string" || typeof(cadena2) !== "string"){
+          return "<h1><center>ERROR. Has introducido un número.</center></h1>";
+        }else {
+          if (cadena1.length > cadena2.length) {
+            return "<h1><center>La cadena más larga entre \"<u>" + cadena1 + "</u>\" y \"<u>" + cadena2 + "</u>\" es <u>" + cadena1 + "</u></center></h1>";
+          } else {
+            return "<h1><center>La cadena más larga entre \"<u>" + cadena1 + "</u>\" y \"<u>" + cadena2 + "</u>\" es <u>" + cadena2 + "</u></center></h1>";
+          }
+        }
       }
 
-      document.write(compararCadenas(cadena1,cadena2));
+      document.write(compararCadenas("Ismael","José"));
+      document.write(compararCadenas("2134","Antonio"));
+      document.write(compararCadenas("Cliente","Servidor"));
 
 
     </script>
