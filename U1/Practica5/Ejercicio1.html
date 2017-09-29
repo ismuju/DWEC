@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 1</title>
+    <script type="text/javascript">
+
+    function tablaMultiplicar(tabla) {
+      var tablaNumero = function (number) {
+        for (var i = 0; i <= number; i++) {
+          document.write("<center><h1>" + tabla + " * " + i + " = " + (i*tabla)+"</h1></center>");
+        }
+      };
+      return tablaNumero;
+    }
+
+
+    var numTabla = prompt("Que tabla quieres que te muestre?");
+    var numMultiplicador = prompt("Hasta que número te multiplico?");
+
+    var tabla2 = tablaMultiplicar(numTabla);
+    tabla2(numMultiplicador);
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
