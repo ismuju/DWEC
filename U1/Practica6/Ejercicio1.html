@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Señor Kioskero</title>
+
+    <script type="text/javascript">
+
+    function generaSurtido() {
+      var nombreSurtido = ["Periódico","Sellos","Golosinas","Quiniela","PlayBoy","HobbyConsolas","Chicles","Lays"];
+      return nombreSurtido;
+    }
+
+    function imagenes(nombreSurtido) {
+      document.write("  <table cellpadding=10px align=center><tr align=center>");
+      for (var i = 0; i < nombreSurtido.length; i++) {
+        document.write("<td>" + "<img width=100px height=100px  onclick='precio(generaSurtido());'  src='" + nombreSurtido[i] + ".jpg' alt='" + nombreSurtido[i] + "'></td>");
+      }
+      document.write("</tr></table>");
+    }
+
+    function precio(surtido) {
+      document.write("<table cellpadding=10px align=center><tr align=center>");
+      for (var i = 0; i < surtido.length; i++) {
+        if (consultaPrecios(i) > 0 )
+          document.write("<td  width=100px><h2>" + consultaPrecios(i) + "€</h2></td>");
+      }
+      document.write("</tr></table>");
+    }
+
+    function consultaPrecios(nArticulo){
+      var precioSurtido = [1,0.30,0.05,1.50,2,1,0.75,1.25];
+      return precioSurtido[nArticulo];
+    }
+
+
+    function mostrarSurtidoPrecio(surtido) {
+      document.write("<tr align=center>");
+      for (var i = 0; i < surtido.length; i++) {
+        if (consultaPrecios(i) > 0 )
+          document.write("<td>" + "<img width=100px height=100px src='" + surtido[i] + ".jpg'><br><h2>" + consultaPrecios(i) + "€</h2></td>");
+      }
+      document.write("</tr>");
+    }
+
+
+    </script>
+
+  </head>
+  <body><center>
+
+    <h1>¿Quieres conocer nuestro surtido?<br>Pulsa sobre la imagen</h1>
+    <img onclick="imagenes(generaSurtido());" src="kiosko.png" alt="kiosko"><br><br>
+
+  </center></body>
+</html>
