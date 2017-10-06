@@ -9,10 +9,8 @@
       // y le darás al usuario la opción de volver a tirar el dado.
       // Para hacer este ejercicio necesitarás la función Math.random()
 
-
       function dado() {
         var numero = Math.floor(Math.random() * 6) + 1;
-
         document.write("<center><img  src='" + numero + ".png' alt='Dado'></center>");
         document.write("<center><input type='button' onclick='dado();window.location.reload();' value='Tirar otra vez'></center>");
       }
@@ -20,7 +18,6 @@
 
   </head>
   <body>
-
     <center><img src='dado.png' onclick='dado();'></center>
 
   </body>
