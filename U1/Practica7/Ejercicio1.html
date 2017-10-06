@@ -8,15 +8,20 @@
       // y si el usuario hace click sobre ella mostrará otra imagen con la cara del dado que ha salido
       // y le darás al usuario la opción de volver a tirar el dado.
       // Para hacer este ejercicio necesitarás la función Math.random()
-      // 
+      //
       // Realiza una función que calcule si un número es primo. Utilizando la función,
       // realiza una página que liste los números primos del 1 al 100.
-
-
-
+      function dado() {
+        var numero = Math.floor(Math.random() * 6) + 1;
+        return numero;
+      }
     </script>
+
   </head>
   <body>
+    <script type="text/javascript">
+      document.write("<center><img onclick='dado();window.location.reload();' src='" + dado() + ".png' alt='Dado'></center>");
+    </script>
 
   </body>
 </html>
