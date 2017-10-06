@@ -10,16 +10,30 @@
 
       var numero = parseInt(edad);
 
+      // var MayorEdad = function(numero){
+      //   if (numero >= 18) {
+      //     return "<ul><li>Coca Cola, 3€</li><li>Café, 5€</li><li>Martini, 9€</li><li>Whisky, 20€</li></ul>";
+      //   } else if (numero < 18) {
+      //     return "<ul><li>Coca Cola, 3€</li><li>Café, 5€</li></ul>";
+      //
+      //   }
+      // }
+
       var MayorEdad = function(numero){
         if (numero >= 18) {
-          return "<ul><li>Coca Cola, 3€</li><li>Café, 5€</li><li>Martini, 9€</li><li>Whisky, 20€</li></ul>";
+          return "Sí";
         } else if (numero < 18) {
-          return "<ul><li>Coca Cola, 3€</li><li>Café, 5€</li></ul>";
-
+          return "No";
         }
       }
 
-      document.write(MayorEdad(numero));
+      if(MayorEdad(numero) === "Sí"){
+        document.write("<ul><li>Coca Cola, 3€</li><li>Café, 5€</li><li>Martini, 9€</li><li>Whisky, 20€</li></ul>");
+      } else if (MayorEdad(numero) === "No") {
+        document.write("<ul><li>Coca Cola, 3€</li><li>Café, 5€</li></ul>";);
+      }
+
+      // document.write(MayorEdad(numero));
 
 
     </script>
