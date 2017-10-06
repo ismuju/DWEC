@@ -4,31 +4,31 @@
     <meta charset="utf-8">
     <title>Ejercicio 4</title>
     <script type="text/javascript">
-      var cadena1 = prompt("Dime cadena1");
-      var cadena2 = prompt("Dime cadena2");
+      // var cadena1 = prompt("Dime cadena1");
+      // var cadena2 = prompt("Dime cadena2");
 
       function compararCadenas(cadena1, cadena2 ){
-        if (!isNaN(cadena1)){
-          cadena1 = parseInt(cadena1);
-        }else if (!isNaN(cadena2)) {
-          cadena2 = parseInt(cadena2);
-        }
+        // if (!isNaN(cadena1)){
+        //   cadena1 = parseInt(cadena1);
+        // }else if (!isNaN(cadena2)) {
+        //   cadena2 = parseInt(cadena2);
+        // }
 
 
         if (typeof(cadena1) !== "string" || typeof(cadena2) !== "string"){
-          return "<h1><center>ERROR. Has introducido un número.</center></h1>";
+          return "ERROR. Has introducido un número.";
         }else {
           if (cadena1.length > cadena2.length) {
-            return "<h1><center>La cadena más larga entre \"<u>" + cadena1 + "(" + cadena1.length + ")</u>\" y \"<u>" + cadena2 + "(" + cadena2.length + ")</u>\" es <u>" + cadena1 + "(" + cadena1.length + ")</u></center></h1>";
+            return "La cadena más larga entre \"" + cadena1 + "(" + cadena1.length + ")\" y \"" + cadena2 + "(" + cadena2.length + ")\" es " + cadena1 + "(" + cadena1.length + ")";
           } else {
-            return "<h1><center>La cadena más larga entre \"<u>" + cadena1 + "(" + cadena1.length + ")</u>\" y \"<u>" + cadena2 + "(" + cadena2.length + ")</u>\" es <u>" + cadena2 + "(" + cadena2.length + ")</u></center></h1>";
+            return "La cadena más larga entre \"" + cadena1 + "(" + cadena1.length + ")\" y \"<u>" + cadena2 + "(" + cadena2.length + ")</u>\" es <u>" + cadena2 + "(" + cadena2.length + ")</u></center></h1>";
           }
         }
       }
 
-      console.info(compararCadenas(cadena1,cadena2));
-      document.write(compararCadenas("2134","Antonio"));
-      document.write(compararCadenas("Cliente","Servidor"));
+      console.info(compararCadenas("Ismael","José"));
+      console.info(compararCadenas("2134","Antonio"));
+      console.info(compararCadenas("Cliente","Servidor"));
 
 
     </script>
