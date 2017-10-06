@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OPCIONAL Primo</title>
+
+    <script type="text/javascript">
+      // Realiza una función que calcule si un número es primo.
+      // Utilizando la función, realiza una página que liste los números primos del 1 al 100.
+
+      function primo(num){
+        if(num == 1)
+          return false;
+
+          var primo = true;
+        	for (var i = 2; i<num; i++) {
+        		if (num % i == 0)
+        			primo = false;
+        	}
+        	return primo;
+      }
+
+    </script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    var numero = 10;
+      if (primo(numero)) {
+        document.write("<h1>El número " + numero + " es primo.</h1><br>");
+      } else {
+        document.write("<h1>El número " + numero + " no es primo.</h1><br>");
+    }
+
+
+
+
+
+
+      for (var i = 1; i <= 100; i++) {
+        var numero = i;
+          if (primo(numero)) {
+            document.write("El número " + numero + " es primo.<br>");
+          } else {
+            document.write("El número " + numero + " no es primo.<br>");
+        }
+      }
+    </script>
+
+
+  </body>
+</html>
