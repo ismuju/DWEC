@@ -4,15 +4,47 @@
     <meta charset="utf-8">
     <title>Ejercicio 2</title>
     <script type="text/javascript">
-      1. Consulta los atributos y métodos de Number y de Math y
-      crea una página que muestre y conteste a las frases siguientes:
-        a. El número más grande en Javascript es:
-        b. El número más pequeño en Javascript es:
-        c. La raíz cuadrada de 7 con precisión de 4 números (contando enteros y decimales) es:
-        d. El área de un círculo de radio 3 (con dos números decimales) es:
+      // 2. Crea el objeto Coche empleando Object incluyendo:
+      //   a. El atributo Marca, Ruedas, Plazas y Color.
+      //   b. El método Pintar que cambia el atributo Color a white.
+      //   c. Crea dos instancias de Coche.
+      //   d. Elimina el atributo Plazas del primer objeto que has creado.
+      //   e. Comprueba con Object.keys() los atributos que tienen los objetos que has creado y muéstralo por consola.
+
+        var Coche = new Object();
+        Coche.marca;
+        Coche.ruedas;
+        Coche.plazas;
+        Coche.color;
+
+        function Pintar(car){
+          car.color = "white";
+        }
+
+        Coche.marca = "Toyota";
+        Coche.ruedas = 4;
+        Coche.plazas = 7;
+        Coche.color = "Dorado";
+
+        var Coche1 = new Object();
+        Coche1.marca = "Ferrari";
+        Coche1.ruedas = 4;
+        Coche1.plazas = 4;
+        Coche1.color = "Rojo";
+
+        var Coche2 = new Object();
+        Coche2.marca = "Citroen";
+        Coche2.ruedas = 4;
+        Coche2.plazas = 5;
+        Coche2.color = "Verde";
 
 
-        // var empresa = new Object();
+
+        delete Coche.plazas;
+
+        console.info(Object.keys(Coche));
+        console.info(Object.keys(Coche1));
+        console.info(Object.keys(Coche2));
 
     </script>
   </head>
