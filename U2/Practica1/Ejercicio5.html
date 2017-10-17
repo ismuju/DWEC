@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    // 5. Modifica el objeto Persona de manera que:
+    //   a. Incorpores el atributo Teléfono sólo en una de las instancias que has creado en el ejercicio 4c.
+    //   b. Incorpores el atributo Edad de manera que se modifique en todas las instancias y se asigne un número random entre 1 y 100 años.
+    //   Pista: emplea Math.random() para generar un número aleatorio y Math.floor() para redondear al entero inferior.
+    //   c. Incorpores el método CumplirAnyo que sume 1 a la edad de la Persona
+    //   d. Muestra por pantalla los atributos y métodos que se han incorporado.
+
+
+
+    function Persona(nombre, apellidos) {
+      this.nombre = nombre || "Anónimo";
+      this.apellidos = apellidos;
+      this.Saludar = function(){
+        console.info("Hola me llamo " + this.nombre + " " + this.apellidos);
+      }
+    }
+
+    Persona.prototype.Edad = Math.floor(Math.random()*100)+1;
+
+    Persona.prototype.CumplirAnyo = function() {
+      this.Edad++;
+    }
+
+
+
+    var Persona1 = new Persona( "Ismael","Muñoz");
+    Persona1.Telefono = 658900884;
+    Persona1.Saludar();
+    console.info("Teléfono: " + Persona1.Telefono);
+    console.info("Edad:");
+    console.info("Persona1 es instancia de Persona: " + (Persona1 instanceof Persona));
+
+    var Persona2 = new Persona("Jaime","Muñoz");
+    Persona2.Saludar();
+    console.info("Persona2 es instancia de Persona: " + (Persona2 instanceof Persona));
+
+
+    document.write("Atributos Persona1: " + Object.keys(Persona1) + "<br>");
+
+    document.write("Atributos Persona2: " + Object.keys(Persona2) + "<br>");
+
+    </script>
+
+
+  </body>
+</html>
