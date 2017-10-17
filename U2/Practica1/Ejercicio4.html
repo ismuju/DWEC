@@ -14,13 +14,13 @@
 
       function Persona(nombre, apellidos) {
         this.nombre = nombre || "Anónimo";
-        this.apellidos = apellidos || "Anónimo";
+        this.apellidos = apellidos;
         this.Saludar = function(){
           console.info("Hola me llamo " + this.nombre + " " + this.apellidos);
         }
       }
 
-      var Persona1 = new Persona();
+      var Persona1 = new Persona( "Ismael","Muñoz");
       Persona1.Saludar();
       console.info("Persona1 es instancia de Persona: " + (Persona1 instanceof Persona));
 
