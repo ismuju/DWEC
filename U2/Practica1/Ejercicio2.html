@@ -12,19 +12,16 @@
       //   e. Comprueba con Object.keys() los atributos que tienen los objetos que has creado y muéstralo por consola.
 
         var Coche = new Object();
-        Coche.marca;
-        Coche.ruedas;
-        Coche.plazas;
-        Coche.color;
-
-        function Pintar(car){
-          car.color = "white";
-        }
-
         Coche.marca = "Toyota";
         Coche.ruedas = 4;
         Coche.plazas = 7;
         Coche.color = "Dorado";
+
+        Coche.Pintar = function () {
+          Coche.color = "white";
+        }
+
+
 
         var Coche1 = new Object();
         Coche1.marca = "Ferrari";
@@ -32,11 +29,21 @@
         Coche1.plazas = 4;
         Coche1.color = "Rojo";
 
+        Coche1.Pintar = function () {
+          Coche1.color = "white";
+        }
+
+
+
         var Coche2 = new Object();
         Coche2.marca = "Citroen";
         Coche2.ruedas = 4;
         Coche2.plazas = 5;
         Coche2.color = "Verde";
+
+        Coche1.Pintar = function () {
+          Coche1.color = "white";
+        }
 
 
 

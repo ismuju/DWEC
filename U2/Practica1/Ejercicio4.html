@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 4</title>
+    <script type="text/javascript">
+      // 4. Crea el objeto Persona incluyendo en el constructor:
+      //   a. Los atributos Nombre (por defecto será Anónimo si no se indica uno) y Apellidos.
+
+      //   b. El método Saludar() que muestra por consola el mensaje “Hola me llamo <nombre> <apellidos>” (siendo nombre y apellido las propiedades correspondientes.
+      //   c. Crea dos instancias empleando el constructor.
+      //   d. Comprueba con instanceof que los objetos que has creado son instancias del constructor.
+      //   e. Muestra por pantalla los atributos y emplea los métodos.
+
+      function Persona(nombre, apellidos) {
+        this.nombre = nombre || "Anónimo";
+        this.apellidos = apellidos || "Anónimo";
+        this.Saludar = function(){
+          console.info("Hola me llamo " + this.nombre + " " + this.apellidos);
+        }
+      }
+
+      var Persona1 = new Persona();
+      Persona1.Saludar();
+      console.info("Persona1 es instancia de Persona: " + (Persona1 instanceof Persona));
+
+      var Persona2 = new Persona("Jaime","Muñoz");
+      Persona2.Saludar();
+      console.info("Persona2 es instancia de Persona: " + (Persona2 instanceof Persona));
+
+
+      document.write("Atributos Persona1: " + Object.keys(Persona1) + "<br>");
+
+      document.write("Atributos Persona2: " + Object.keys(Persona2) + "<br>");
+
+
+
+    </script>
+
+  </head>
+  <body>
+
+  </body>
+</html>

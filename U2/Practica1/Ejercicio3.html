@@ -7,14 +7,18 @@
     <script type="text/javascript">
       // Crea el objeto Coche anterior empleando literales en lugar del objeto Object.
       var Coche = {
-        Marca: "Toyota";
-        Ruedas: 4;
-        Plazas: 7;
-        Color: "Dorado";
-        function Pintar(){
-          Color: "White";
+        Marca: 'Toyota',
+        Ruedas: 4,
+        Plazas: 7,
+        Color: 'Dorado',
+        Pintar: function () {
+          this.Color= "white"
         }
-      }
+      };
+
+
+
+      console.info(Object.keys(Coche));
 
     </script>
 
