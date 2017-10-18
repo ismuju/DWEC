@@ -19,7 +19,7 @@
       this.nombre = nombre || "Anónimo";
       this.apellidos = apellidos;
       this.Saludar = function(){
-        console.info("Hola me llamo " + this.nombre + " " + this.apellidos);
+        document.write("<br>Hola me llamo " + this.nombre + " " + this.apellidos + "<br>");
       }
     }
 
@@ -34,18 +34,20 @@
     var Persona1 = new Persona( "Ismael","Muñoz");
     Persona1.Telefono = 658900884;
     Persona1.Saludar();
-    console.info("Teléfono: " + Persona1.Telefono);
-    console.info("Edad:");
-    console.info("Persona1 es instancia de Persona: " + (Persona1 instanceof Persona));
+    document.write("Teléfono: " + Persona1.Telefono + "<br>");
+    document.write("Edad:" + Persona1.Edad + "<br>");
+    document.write("Persona1 es instancia de Persona: " + (Persona1 instanceof Persona) + "<br>");
+    document.write("Atributos Persona1: " + Object.keys(Persona1) + "<br>");
+
+
 
     var Persona2 = new Persona("Jaime","Muñoz");
     Persona2.Saludar();
-    console.info("Persona2 es instancia de Persona: " + (Persona2 instanceof Persona));
-
-
-    document.write("Atributos Persona1: " + Object.keys(Persona1) + "<br>");
-
+    document.write("Edad:" + Persona2.Edad + "<br>");
+    document.write("Persona2 es instancia de Persona: " + (Persona2 instanceof Persona) + "<br>");
     document.write("Atributos Persona2: " + Object.keys(Persona2) + "<br>");
+
+
 
     </script>
 

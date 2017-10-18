@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 6</title>
+
+    <script type="text/javascript">
+      // 6. Crea el constructor Estudiante a partir del objeto Persona:
+      //   a. Incorpora el atributo Estudios
+      //   b. Incorpora el atributo NotaMedia (redondeada a 2 decimales)
+      //   Pista: emplea el método toFixed() para poder hacer el redondeo del número que pase el usuario
+      //   c. Incorpora el método Recuperar() que permitirá poner una nota de 5 a los alumnos con nota inferior a 5.
+
+      //   d. Crea un array utilizando new Array llamado Lista.
+      // Incluye en ese array 3 objetos alumno de ejemplo. Crea esos objetos utilizando el constructor.
+      //   e. Muestra todos los atributos de cada objeto que se almacena en lista porconsola con un mensaje como este:
+      //   “El estudiante de <estudios>, <nombre> <apellidos> tiene una nota media de <notaMedia>”
+
+
+      function Persona(nombre, apellidos) {
+        this.Nombre = nombre || "Anónimo";
+        this.Apellidos = apellidos;
+        this.Saludar = function(){
+          document.write("<br>Hola me llamo " + this.Nombre + " " + this.Apellidos + "<br>");
+        }
+      }
+
+      Persona.prototype.Edad = Math.floor(Math.random()*100)+1;
+
+      Persona.prototype.CumplirAnyo = function() {
+        this.Edad++;
+      }
+
+      function Estudiante(nombre, apellidos, estudios, nota){
+        Persona.call(this,nombre,apellidos);
+        this.Estudios = estudios;
+        this.NotaMedia =  nota.toFixed(2);
+        this.Recuperar = function () {
+          if (nota < 5) {
+            this.NotaMedia = 5;
+            document.write("Has recuperado.<br>");
+          } else {
+            document.write("No tienes que recuperar, estás aprobado.<br>");
+          }
+        }
+
+      }
+
+      var Lista = new Array(3);
+      Lista[0] = new Estudiante( "Ismael","Muñoz", "GradoSuperior", 9.2355);
+      Lista[1] = new Estudiante( "Tomás","Sala", "GradoMedio", 3.8472);
+      Lista[2] = new Estudiante( "Alex","Romero", "GradoSuperior", 6.23423);
+
+
+for (var i = 0; i < Lista.length; i++) {
+  console.info("El estudiante de " + Lista[i].Estudios + ", " + Lista[i].Nombre + " " + Lista[i].Apellidos +" tiene una nota media de " + Lista[i].NotaMedia);
+}
+
+
+
+    </script>
+
+
+  </head>
+  <body>
+
+  </body>
+</html>
