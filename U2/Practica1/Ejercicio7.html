@@ -16,7 +16,15 @@
       //   f. Las palabras separadas por comas que componen la frase son:
       //   g. Las posiciones de la 11 a la 18 de frase son:
 
-
+      var frase = "Esto es un string";
+      document.write("<h1>" + frase + "</h1>");
+      document.write("<b>a. La longitud del string es: </b>" + frase.length +"<br>");
+      document.write("<b>b. El carácter que ocupa la posición 7 es: </b>" + frase.charAt(7-1) + "<br>");
+      document.write("<b>c. El índice en el que está la última t es: </b>" + (frase.lastIndexOf('t')+1) + "<br>");
+      document.write("<b>d. La transformación a minúsculas del string es: </b>" + frase.toLocaleLowerCase() + "<br>");
+      document.write("<b>e. La transformación de mayúsculas del string es: </b>" + frase.toLocaleUpperCase() +"<br>");
+      document.write("<b>f. Las palabras separadas por comas que componen la frase son: </b>" + "<br>");
+      document.write("<b>g. Las posiciones de la 11 a la 18 de frase son: </b>\"" + frase.charAt(18-1) + "\"<br>");
 
     </script>
   </head>
