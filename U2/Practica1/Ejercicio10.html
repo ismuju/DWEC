@@ -5,12 +5,83 @@
     <title>Ejercicio 10</title>
 
     <script type="text/javascript">
-      10. Crea el método crearPassword() del objeto Estudiante y empléalo en un ejemplo. El método devuelve el password del estudiante y lo forma con la concatenación de:
-        a. La primera letra del nombre en mayúsculas.
-        b. El apellido en minúsculas en el que reemplaces las e’s por 3 y las a’s por 4’s
-        c. El número de letras del nombre
-        d. Por ejemplo, Ana Sánchez tendrá el password: As4nch3z3
+      // 10. Crea el método crearPassword() del objeto Estudiante y empléalo en un ejemplo.
+      // El método devuelve el password del estudiante y lo forma con la concatenación de:
+      //   a. La primera letra del nombre en mayúsculas.
+      //   b. El apellido en minúsculas en el que reemplaces las e’s por 3 y las a’s por 4’s
+      //   c. El número de letras del nombre
+      //   d. Por ejemplo, Ana Sánchez tendrá el password: As4nch3z3
 
+
+
+        function Persona(nombre, apellidos) {
+          this.Nombre = nombre || "Anónimo";
+          this.Apellidos = apellidos;
+          this.Saludar = function(){
+            document.write("<br>Hola me llamo " + this.Nombre + " " + this.Apellidos + "<br>");
+          }
+        }
+
+        Persona.prototype.Edad = Math.floor(Math.random()*100)+1;
+
+        Persona.prototype.CumplirAnyo = function() {
+          this.Edad++;
+        }
+
+
+
+        function Estudiante(nombre, apellidos, estudios, nota){
+          Persona.call(this,nombre,apellidos);
+          this.Estudios = estudios;
+          this.NotaMedia =  nota.toFixed(2);
+          this.Recuperar = function () {
+            if (nota < 5) {
+              this.NotaMedia = 5;
+              document.write("Has recuperado.<br>");
+            } else {
+              document.write("No tienes que recuperar, estás aprobado.<br>");
+            }
+          }
+
+        }
+
+
+        Estudiante.prototype.crearPassword = function() {
+
+// El apellido en minúsculas en el que reemplaces las e’s por 3 y las a’s por 4’s
+
+          var password;
+          password = ((this.Nombre.charAt(0)).toLocaleUpperCase());
+          var apell = this.Apellidos.split(" ");
+          var a = (apell[0]).toLocaleLowerCase();
+
+          a = a.replace('e',3);
+          a = a.replace('a',4);
+
+
+          password = password.concat(a);
+          password = password.concat(this.Nombre.length);
+
+          document.write(password);
+        }
+
+
+
+        var Lista = new Array(3);
+        Lista[0] = new Estudiante( "Ismael","Muñoz Jurado", "GradoSuperior", 9.2355);
+        Lista[1] = new Estudiante( "Tomás","Sala Ramirez", "GradoMedio", 3.8472);
+        Lista[2] = new Estudiante( "Alex","Romero Olivares", "GradoSuperior", 6.23423);
+
+        var apellidos;
+        for (var i = 0; i < Lista.length; i++) {
+          apellidos = Lista[i].Apellidos.split(" ");
+          document.write("<b>Nombre: </b>" + Lista[i].Nombre + "; <b>Primer Apellido: </b>" + apellidos[0] + "; <b>Segundo Apellido:</b> " + apellidos[1] + "<br>");
+        }
+
+        for (var i = 0; i < Lista.length; i++) {
+          document.write("<br><b>Nombre: </b>" + Lista[i].Nombre + " " + Lista[i].Apellidos + "; <b>Contraseña:</b> ");
+          Lista[i].crearPassword();
+        }
 
 
 
