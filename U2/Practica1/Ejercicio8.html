@@ -2,19 +2,16 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ejercicio 7</title>
-    <script type="text/javascript">
+    <title>Ejercicio 8</title>
 
-      // 7. Consulta los métodos de String, define la variable frase y crea una página que muestre
-      // y conteste a las frases siguientes mostrándolas por pantalla:
-      //           var frase = “Esto es un string”
-      //   a. La longitud del string es:
-      //   b. El carácter que ocupa la posición 7 es:
-      //   c. El índice en el que está la última t es:
-      //   d. La transformación a minúsculas del string es:
-      //   e. La transformación de mayúsculas del string es:
-      //   f. Las palabras separadas por comas que componen la frase son:
-      //   g. Las posiciones de la 11 a la 18 de frase son:
+    <script type="text/javascript">
+    // 8. A partir del ejercicio anterior emplea los métodos concat, trim, repeat y replace para realizar los pasos siguientes:
+    //   a. Crea un nuevo string que Incluya frase y frase1 sin espacios en blanco.
+    //     Siendo var frase1 = “ y con esto es un string más largo “.
+    //     Para ello emplea concat y trim para eliminar los espacios en blanco del string que se
+    //     añade antes de concatenarlo. Muestra el resultado por pantalla
+    //   b. Sustituye “largo” por “bonito”. Muestra el resultado por pantalla
+    //   c. Concatena “¡” al final del string del apartado a 20 veces.
 
       var frase = "Esto es un string";
       document.write("<h1>" + frase + "</h1>");
@@ -26,7 +23,18 @@
       document.write("<b>f. Las palabras separadas por comas que componen la frase son: </b>" + frase.split(" ") + "<br>");
       document.write("<b>g. Las posiciones de la 11 a la 18 de frase son: </b> " + frase.slice(11-17) + "<br>");
 
+      var frase1 = " y con esto es un string más largo ";
+
+      var frase2 = frase.concat(frase1.trim());
+      document.write(frase2 + "<br>");
+      document.write(frase2.replace("largo", "bonito") + "<br>");
+
+      var frase3 = frase2.concat("i".repeat(20));
+      document.write(frase3);
+
     </script>
+
+
   </head>
   <body>
 

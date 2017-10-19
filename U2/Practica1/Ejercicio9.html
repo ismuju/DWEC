@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 9</title>
+    <script type="text/javascript">
+    // 9. A partir del objeto Lista del ejercicio 6, separa los apellidos de los estudiantes
+    //   y muestra en la web una lista como la siguiente:
+    //
+    //   Nombre: <nombre> ; Primer Apellido: <1er apellido>; Segundo Apellido <2º Apellido>
+
+
+      function Persona(nombre, apellidos) {
+        this.Nombre = nombre || "Anónimo";
+        this.Apellidos = apellidos;
+        this.Saludar = function(){
+          document.write("<br>Hola me llamo " + this.Nombre + " " + this.Apellidos + "<br>");
+        }
+      }
+
+      Persona.prototype.Edad = Math.floor(Math.random()*100)+1;
+
+      Persona.prototype.CumplirAnyo = function() {
+        this.Edad++;
+      }
+
+      function Estudiante(nombre, apellidos, estudios, nota){
+        Persona.call(this,nombre,apellidos);
+        this.Estudios = estudios;
+        this.NotaMedia =  nota.toFixed(2);
+        this.Recuperar = function () {
+          if (nota < 5) {
+            this.NotaMedia = 5;
+            document.write("Has recuperado.<br>");
+          } else {
+            document.write("No tienes que recuperar, estás aprobado.<br>");
+          }
+        }
+
+      }
+
+      var Lista = new Array(3);
+      Lista[0] = new Estudiante( "Ismael","Muñoz Jurado", "GradoSuperior", 9.2355);
+      Lista[1] = new Estudiante( "Tomás","Sala Ramirez", "GradoMedio", 3.8472);
+      Lista[2] = new Estudiante( "Alex","Romero Olivares", "GradoSuperior", 6.23423);
+
+      var apellidos;
+      for (var i = 0; i < Lista.length; i++) {
+        apellidos = Lista[i].Apellidos.split(" ");
+        document.write("<b>Nombre: </b>" + Lista[i].Nombre + "; <b>Primer Apellido: </b>" + apellidos[0] + "; <b>Segundo Apellido:</b> " + apellidos[1] + "<br>");
+      }
+
+
+
+
+
+
+
+    </script>
+
+  </head>
+  <body>
+
+  </body>
+</html>
