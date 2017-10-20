@@ -47,17 +47,17 @@
 
 
         Estudiante.prototype.crearPassword = function() {
-
-// El apellido en minúsculas en el que reemplaces las e’s por 3 y las a’s por 4’s
-
-          var password;
-          password = ((this.Nombre.charAt(0)).toLocaleUpperCase());
+          var password = ((this.Nombre.charAt(0)).toLocaleUpperCase());
           var apell = this.Apellidos.split(" ");
           var a = (apell[0]).toLocaleLowerCase();
 
-          a = a.replace('e',3);
-          a = a.replace('a',4);
+          while(a.search("e") >= 0){
+            a = a.replace('e',3);
+          }
 
+          while(a.search("a") >= 0){
+            a = a.replace('a',4);
+          }
 
           password = password.concat(a);
           password = password.concat(this.Nombre.length);
