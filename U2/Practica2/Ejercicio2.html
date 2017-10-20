@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 2</title>
+    <script type="text/javascript">
+      // 2. Crea un script que:
+      //   a. Solicite al usuario la fecha de las próximas vacaciones con un formato string tipo “aaaa-mm-dd” o “aaaa/mm/dd”.
+      //   b. Convierte la fecha anterior en un objeto Date y calcula cuántos milisegundos quedan hasta esa fecha.
+      //   c. Calcule cuántos días quedan hasta esa fecha
+
+      var vacaciones = prompt("Dime la fecha de las próximas vacaciones tipo 'aaaa-mm-dd' o 'aaaa/mm/dd'");
+
+      var fecha = new Date(vacaciones);
+
+      //SACO LAS FECHAS EN MILISEGUNDOS
+      var dia1 = Date.parse(fecha);
+
+      //VEO CUANTOS DÍAS SON Y LA DIFERENCIA
+      var diaMili=1000*60*60*24;
+      var resul = (Date.now() - dia1);
+      var diaSecun1 = resul/diaMili;
+
+      console.info(diaSecun1 + " días");
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

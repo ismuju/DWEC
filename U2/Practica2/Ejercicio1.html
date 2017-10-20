@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 1</title>
+
+    <script type="text/javascript">
+    // 1. Crea un objeto “fecha” empleando el objeto Date. A partir de ese objeto:
+    //   a. Muestra por consola el día (del 1 al 31)
+    //   b. Muestra por consola el mes (del 1 al 12)
+    //   c. Muestra por consola el año
+    //   d. Muestra el día de la semana (Lunes, Martes, …)
+    //   e. Muestra la fecha completa con formato dd/mm/aaaa
+    //   f. Muestra las horas (de 0 a 23)
+    //   g. Muestra la fecha completa con formato dd/mm/aaaa HH:MM:SS
+
+
+      var fecha = new Date();
+      console.log("a. Muestra por consola el día (del 1 al 31): " + fecha.getDay());
+      console.log("b. Muestra por consola el mes (del 1 al 12): " + (fecha.getMonth() + 1));
+      console.log("c. Muestra por consola el año: " + fecha.getFullYear());
+      var semana = new Array();
+        semana[0] = "Domingo";
+        semana[1] = "Lunés";
+        semana[2] = "Martes";
+        semana[3] = "Miércoles";
+        semana[4] = "Jueves";
+        semana[5] = "Viernes";
+        semana[6] = "Sábado";
+      console.log("d. Muestra el día de la semana (Lunes, Martes, …): " + semana[fecha.getUTCDay()]);
+      console.log("e. Muestra la fecha completa con formato dd/mm/aaaa: " + fecha.toLocaleDateString());
+      console.log("f. Muestra las horas (de 0 a 23): " + fecha.getHours());
+      console.log("g. Muestra la fecha completa con formato dd/mm/aaaa HH:MM:SS: " + fecha.toLocaleString());
+
+    </script>
+
+  </head>
+  <body>
+
+  </body>
+</html>
