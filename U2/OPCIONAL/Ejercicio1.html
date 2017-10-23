@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 1</title>
+
+    <script type="text/javascript">
+
+      //CONSTRUCTOR PRODUCTO
+      function Producto(codigo, nombre, ingredientes) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = ((Math.random()*2)+1).toFixed(2);
+        this.ingredientes = ingredientes;
+        this.imprimeDatos = function(){
+          document.write("<br><b>Código: </b>" + this.codigo + "<br><b>Nombre: </b>" + this.nombre + "<br><b>Precio: </b>" + this.precio + "€<br>");
+        }
+      }
+
+      //BORRA EL ÚLTIMO INGREDIENTE SI NO ES EL ÚLTIMO
+      Producto.prototype.borraIngredientes = function() {
+        if (this.ingredientes.length > 1){
+          // delete this.ingredientes[(this.ingredientes.length-1)];
+          this.ingredientes.pop(); //BORRA ULTIMO ELEMENTO DEL ARRAY
+
+        } else {
+          alert("No se puede borrar el ingrediente porque es el único que queda.");
+        }
+      }
+
+      //VENTANA BUSCAR ALIMENTO
+      Producto.prototype.buscaInfo = function() {
+        window.open("https://www.google.es/search?q=" + this.nombre);
+      }
+
+      //VENTANA LISTA DE INGREDIENTES
+      Producto.prototype.verIngredientes = function() {
+          var ventanaIngredientes = window.open("", "Ingredientes", "width=400,height=400"); //CREO LA VENTANA
+
+          ventanaIngredientes.document.write("<center><h1>INGREDIENTES</h1><ul></center>");
+          for (var i = 0; i < this.ingredientes.length; i++) {
+            ventanaIngredientes.document.write( "<h3><li>" + this.ingredientes[i] + "</li></h3>");
+          }
+
+          ventanaIngredientes.document.write("</ul><center><br><br><button onclick='window.close()'>CERRAR VENTANA</button></center>");
+      }
+
+
+      //CREO OBJETOS
+      var Productos = new Array();
+      Productos[0] = new Producto(12345, "Macarrones", ["Pasta", "Tomate", "Queso", "Cebolla", "Sal"]);
+      Productos[1] = new Producto(56789, "Patatas Fritas", ["Patatas", "Aceite", "Sal"]);
+      Productos[2] = new Producto(01928, "Ensalada", ["Lechuga", "Tomate", "Pepino", "Cebolla", "Aceite", "Sal"]);
+
+
+      //MUESTRO POR PANTALLA
+      for (var i = 0; i < Productos.length; i++) {
+        Productos[i].imprimeDatos();
+
+        document.write("<button onclick='Productos[ " + i + "].verIngredientes()'>Ver Ingredientes</button> ");
+        document.write("<button onclick='Productos[ " + i + "].borraIngredientes()'>Eliminar ingrediente</button> ");
+        document.write("<button onclick='Productos[ " + i + "].buscaInfo()'>Más información</button><br><br>");
+
+      }
+
+
+    </script>
+
+  </head>
+  <body>
+
+  </body>
+</html>
