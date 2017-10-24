@@ -18,10 +18,10 @@
 
       //VEO CUANTOS DÍAS SON Y LA DIFERENCIA
       var diaMili=1000*60*60*24;
-      var resul = (Date.now() - dia1);
+      var resul = (dia1 - Date.now());
       var diaSecun1 = resul/diaMili;
 
-      console.info(diaSecun1 + " días");
+      console.info("Te quedan " + Math.ceil(diaSecun1) + " días");
 
 
 
