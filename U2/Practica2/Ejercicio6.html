@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 6</title>
+    <script type="text/javascript">
+
+      // 6. Crea un array con diferentes tipos de valores (números, strings, booleanos).
+      var array = [true, 22, "Ismael", 30, "Valencia", false, 30];
+
+
+      //   a. A partir de dicho array, utilizando map(), genera otro array con dichos valores convertidos todos a número.
+      var arrayNumber = (array.map(function(num) {
+        return Number(num);
+      }));
+
+      console.log(arrayNumber);
+
+      //   b. Utiliza filter para no incluir en el array final los elementos que no hayan podido ser convertidos (NaN).
+      var arrayNumber = (arrayNumber.filter(function(nun) {
+        return !isNaN(nun);
+      }));
+
+
+      //   c. Imprime dicho array resultante por consola.
+      console.log(arrayNumber);
+
+    </script>
+
+  </head>
+  <body>
+
+  </body>
+</html>

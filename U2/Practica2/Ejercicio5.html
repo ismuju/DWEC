@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5</title>
+    <script type="text/javascript">
+
+
+      function Persona(nombre, apellidos) {
+        this.Nombre = nombre || "Anónimo";
+        this.Apellidos = apellidos;
+        this.Saludar = function(){
+          document.write("<br>Hola me llamo " + this.Nombre + " " + this.Apellidos + "<br>");
+        }
+      }
+
+      Persona.prototype.Edad = Math.floor(Math.random()*100)+1;
+
+      Persona.prototype.CumplirAnyo = function() {
+        this.Edad++;
+      }
+
+      function Estudiante(nombre, apellidos, estudios, nota){
+        Persona.call(this,nombre,apellidos);
+        this.Estudios = estudios;
+        this.NotaMedia =  nota.toFixed(2);
+        this.Recuperar = function () {
+          if (nota < 5) {
+            this.NotaMedia = 5;
+            document.write("Has recuperado.<br>");
+          } else {
+            document.write("No tienes que recuperar, estás aprobado.<br>");
+          }
+        }
+
+      }
+
+
+      // for (var i = 0; i < Lista.length; i++) {
+      // console.info("El estudiante de " + Lista[i].Estudios + ", " + Lista[i].Nombre + " " + Lista[i].Apellidos +" tiene una nota media de " + Lista[i].NotaMedia);
+      // }
+
+      // 5. Copia el Array de objetos Estudiante que creaste en U2Ejercicios1,
+      // 6d y utiliza sort para ordenar a los estudiantes en función de la nota.
+
+      Estudiante.prototype.toString = function() {
+        return this.Nombre + " (" + this.NotaMedia + ")";
+      }
+
+
+      var Lista = new Array(3);
+      Lista[0] = new Estudiante( "Ismael","Muñoz", "GradoSuperior", 9.2355);
+      Lista[1] = new Estudiante( "Tomás","Sala", "GradoMedio", 3.8472);
+      Lista[2] = new Estudiante( "Alex","Romero", "GradoSuperior", 6.23423);
+
+
+      Lista.sort(function(p1, p2) {
+        return p1.NotaMedia - p2.NotaMedia; // Comparamos la edad
+      });
+      console.log(Lista.toString()); // Imprime:"Filippa (9),Mary (15),Thomas (24),John (51)"
+
+
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
