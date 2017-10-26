@@ -6,9 +6,35 @@
     <script type="text/javascript">
 
 
+      // 7. Utiliza el método forEach para:
+      var a = [4, 21, 33, 12, 9, 54];
+      console.log(a);
 
 
-      
+      //   a. Multiplicar por 2 cada elemento del array a que has empleado en el ejercicio 4c
+      //     (var a = [4, 21, 33, 12, 9, 54];). Muestra el array por pantalla.
+      a.forEach(function(num, indice) {
+        a[indice] = num*2;
+      });
+      console.log(a);
+
+
+      //   b. Imprimir por pantalla el array resultante del ejercicio 6
+      //     (indica el índice y los atributos del objeto correspondiente al elemento en el que estamos).
+      var array = [true, 22, "Ismael", 30, "Valencia", false, 30];
+      var arrayNumber = (array.map(function(num) {
+        return Number(num);
+      }));
+      var arrayNumber = (arrayNumber.filter(function(nun) {
+        return !isNaN(nun);
+      }));
+
+
+      array.forEach(function(num, indice, array) {
+        console.log("Índice " + indice + " en [" + array + "] es " + num);
+      });
+
+
     </script>
   </head>
   <body>

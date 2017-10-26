@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 9</title>
+    <script type="text/javascript">
+      // 9. Crea una web que muestre la hora por consola formateada como HH:MM:SS.
+      // El refresco de esa información debe ser cada 5 segundos.
+
+      setInterval(temporizador, 5000);
+
+      function temporizador() {
+          var d = new Date();
+          console.clear();
+          console.log(d.toLocaleTimeString());
+      }
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
