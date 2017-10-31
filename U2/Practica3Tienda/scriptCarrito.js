@@ -5,13 +5,13 @@ if (!navigator.cookieEnabled) {
 
 
 // b. Inicializa el objeto Usuario con los datos del usuario actual, calcula el importe de la compra y la muestra.
-var usuario1 = new Usuario(p);
+var micompra = [productos[0],productos[3]];
 
-// usuario1.calcularImporte();
-//
-// document.write(usuario1.importe);
+var usuario1 = new Usuario(micompra); //  COGE LOS PRODUCTOS SELECCIONADOS
 
+usuario1.calcularImporte(); // LOS SUMA
 
+document.write(usuario1.importe); // MUESTRA EL TOTAL A PAGAR
 
 
 
