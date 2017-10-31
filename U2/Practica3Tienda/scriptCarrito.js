@@ -5,6 +5,13 @@ if (!navigator.cookieEnabled) {
 
 
 // b. Inicializa el objeto Usuario con los datos del usuario actual, calcula el importe de la compra y la muestra.
+var usuario1 = new Usuario(p);
+
+// usuario1.calcularImporte();
+//
+// document.write(usuario1.importe);
+
+
 
 
 
