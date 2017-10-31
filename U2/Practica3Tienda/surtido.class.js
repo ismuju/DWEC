@@ -1,21 +1,21 @@
 function Surtido(productos) {
   this.productos = productos;
 
-  this.ordenPrecioMas = function(){
+  this.ordenPrecioMas = function(){ //ORDENA LOS PRODUCTOS DE MENOR A MAYOR
     this.productos.sort(function(p1,p2){
       return (p1.precio - p2.precio);
     });
   }
 
 
-  this.ordenPrecioMenos = function(){
+  this.ordenPrecioMenos = function(){ //ORDENA LOS PRODUCTOS DE MAYOR A MENOR
     this.productos.sort(function(p1,p2){
       return (p2.precio - p1.precio);
     });
   }
 
 
-  this.filtrarVegano = function(){
+  this.filtrarVegano = function(){ //MUESTRA SOLO PRODUCTOS VEGANOS
     var a = this.productos.filter(function(p1){
       return p1.vegano;
     });
@@ -35,7 +35,7 @@ function Surtido(productos) {
         str += "<p><b>" + this.productos[i].precio + "€</b></p>";
         str += "</div>";
       }
-    } else{
+    } else{ //SI NO SE LE PASA ARRAY
       for (var i = 0; i < produ.length; i++) {
         str += "<div>";
         str += "<img src='" + produ[i].foto + "' alt='";

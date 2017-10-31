@@ -1,14 +1,12 @@
 
 function Usuario(productos){
-
-
   this.id = Math.floor((Math.random()*1000)+1);
   this.idioma = navigator.language;
   this.navegador = navigator.userAgent;
   this.compra = productos;
   this.importe = 0;
 
-  this.eliminarCompra = function(){
+  this.eliminarCompra = function(){ //elimina el último elemento del array compra mientras existan elementos.
     if (this.compra.length > 0){
       this.compra.pop(); //BORRA ULTIMO ELEMENTO DEL ARRAY
     } else {
@@ -16,7 +14,7 @@ function Usuario(productos){
     }
   }
 
-  this.calcularImporte = function(){
+  this.calcularImporte = function(){ //calcula el importe
     function suma(total, num) {
         return total + num.precio;
     }
@@ -37,8 +35,5 @@ function Usuario(productos){
     }
     cuerpo.innerHTML = str;
   }
-
-
-
 
 }
