@@ -10,7 +10,7 @@ function Usuario(productos){
     if (this.compra.length > 0){
       this.compra.pop(); //BORRA ULTIMO ELEMENTO DEL ARRAY
     } else {
-      console.error("No se puede borrar el ingrediente porque es el único que queda.");
+      alert("No te quedan más productos en el carrito.");
     }
   }
 
