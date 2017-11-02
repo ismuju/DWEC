@@ -24,7 +24,7 @@ function verVegano(){
 
 // Vuelve a cargar la página
 function recarga() {
-  p.dibujarSurtido();
+  location.reload();
 }
 
 // Muestra en otra ventana emergente las condiciones de compra y un botón que permite cerrarlas.
