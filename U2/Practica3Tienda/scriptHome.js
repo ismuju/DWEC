@@ -1,6 +1,6 @@
 // Creará el objeto p de tipo Surtido y dibujará el Surtido
 var p = new Surtido(productos);
-p.dibujarSurtido(miCompra);
+p.dibujarSurtido();
 //var micompra = [productos[0],productos[3]];
 
 

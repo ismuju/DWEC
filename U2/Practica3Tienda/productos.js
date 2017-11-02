@@ -40,5 +40,21 @@ var productos = [
     foto:'https://media2.ocu.org//images/CE9E19F522012DD79E635A40B861F4F8C3DAB876/w150-c4/hf31300041604001.jpg',
     precio: 5.30,
     vegano: true
+  },
+  {
+    nombre:'Golosinas',
+    descripcion: 'Bolsa con un surtido de Golosinas. Paquete 80g',
+    foto:'https://http2.mlstatic.com/gomitas-haribo-750g-paquete-grande-golosinas-sin-gluten-D_NQ_NP_548905-MLA25128393409_102016-F.jpg',
+    precio: 1.30,
+    vegano: true
+  },
+  {
+    nombre:'Botella de agua',
+    descripcion: 'Botella con agua de los Picos de Europa. Botella 1.5L',
+    foto:'http://todosayudan.com/wp-content/uploads/2011/03/botellas_agua.jpg',
+    precio: 0.30,
+    vegano: true
   }
 ];
+
+var micompra = [productos[0],productos[3],productos[5],productos[6],productos[7]];
