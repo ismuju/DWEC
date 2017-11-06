@@ -7,9 +7,28 @@
     <h1> Esto es un título</h1>
     <p>Esto es un ejemplo </p>
     <div> Esto es un div</div>
+
+
     <script type="text/javascript">
-      document.body.children[0].innerHTML = "Nuevo contenido";
-      document.body.children[1].style.color = "blue";
+      // a. Modificar el texto de los 3 elementos del body referenciándolos a partir de document.body.
+      for (var i = 0; i < document.body.children.length; i++) {
+        document.body.children[i].innerHTML = "Elemento " + i;
+      }
+
+      // b. Modificar el title de la página
+      document.body.getElementsByTagName("h1")[0].innerHTML = "Esto es el titulo";
+
+      // c. Modificar el color de los elementos de body a azul
+      document.body.style.color = "blue";
+
+
+      // d. Listar en la consola todos los hijos de body
+      console.info(document.body.childNodes);
+
+      // e. Listar en la consola los hijos de tipo element de body
+      console.info(document.body.children);
+
     </script>
+    
   </body>
 </html>
