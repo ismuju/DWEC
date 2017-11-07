@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de la Compra</title>
+  </head>
+  <body>
+    <h1>Lista de la compra</h1>
+
+    <input type="text" name="texto" size="20"></input>
+    <select name="selector" id="selector">
+      <option value=0>Escoge una opción</option>
+      <option value="red">Carnicería</option>
+      <option value="navy">Pescadería</option>
+      <option value="cyan">Congelados</option>
+      <option value="gold">Panadería</option>
+      <option value="magenta">Perfumería</option>
+    </select>
+
+    <button onclick="añadirElemento()">Añadir Elemento</button>
+    <button onclick="borrarLista()">Borrar Lista</button>
+    <hr>
+
+    <script type="text/javascript">
+    function añadirElemento() {
+      var txt = document.getElementsByTagName('input')[0].value;
+      if (txt == "") {
+        alert("Introduce un nombre");
+      } else{
+        if (selector.value != 0) {
+          var parrafo = document.createElement("p");
+          var textoCaja = document.createTextNode(txt);
+          parrafo.appendChild(textoCaja);
+
+          document.body.appendChild(parrafo).style.color = selector.value;
+
+          parrafo.setAttribute("onclick","borrarElemento()");
+          document.getElementsByTagName('input')[0].value = "";
+
+        } else {
+          alert("Elije una opción diferente.");
+        }
+      }
+    }
+
+
+      function borrarElemento(){
+          document.body.removeChild(document.querySelector("p:hover"));
+      }
+
+      function borrarLista(){
+
+        var borrar = document.getElementsByTagName('p');
+        var cont = borrar.length;
+        for (var i = 0; i < cont; i++) {
+          document.body.removeChild(borrar[0]);
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

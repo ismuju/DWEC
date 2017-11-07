@@ -9,8 +9,19 @@
     // una imagen de 50px de ancho y 50px de alto a partir del html siguiente.
     // Emplea para ello únicamente JS.
 
-    document.body.appendChild(document.createElement("H1"));
-    document.body.appendChild(document.createTextNode("Esto es un H1"));
+
+
+    var h1 = document.createElement("h1");
+    var txt = document.createTextNode("Esto es un H1");
+    h1.appendChild(txt);
+
+    document.body.appendChild(h1).style.color = "blue";
+    h1.style.fontFamily = "Arial";
+
+    var img = document.createElement("img");
+    img.setAttribute("width","50px");
+    img.setAttribute("heigth","50px");
+
 
   }
   </script>
