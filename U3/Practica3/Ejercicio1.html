@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style media="screen">
+	.columna{
+		display:inline-block;
+		width: 180px;
+		height: 20px;
+		border-radius: 8px;
+		border: 2px solid navy;
+		text-align: center;
+	}
+</style>
+<script charset="utf-8">
+var StarWarsFilms=[
+	{titulo: "Episodi IV", nombre:"Una Nueva Esperanza", any: 1977 ,director: "George Lucas"},
+	{titulo: "Episodi V", nombre:"El Imperio Contraataca", any:1980, director: "George Lucas"},
+	{titulo: "Episodi VI", nombre:"El Retorno del Jedi", any:1984, director: "George Lucas"},
+	{titulo: "Episodi I", nombre:"La Amenaza Fantasma", any:1999, director: "George Lucas"},
+	{titulo: "Episodi II", nombre:"El ataque de los clones", any:2002, director: "George Lucas"},
+	{titulo: "Episodi III", nombre:"La Venganza de los Sith", any:2005, director: "George Lucas"},
+	{titulo: "Episodi VII", nombre:"El Despertar de la Fuerza", any:2015, director: "J.J. Abrams"}
+     ];
+onload = function cargaInfo(){
+	/*Aquí tengo que crear los nodos del DOM*/
+
+  // -------------Incluye el título y cámbiale el formato.
+  var h1 = document.createElement("h1"); //CREO UN ELEMENTO
+  var txt = document.createTextNode("La saga StarWars"); //CREO UN TEXTO
+  h1.appendChild(txt); //DIGO QUE EL TEXTO SERÁ EL HIJO DEL ELEMENTO
+  document.body.appendChild(h1).style.fontFamily = "arial"; //LE DIGO QUE EL ELEMENTO ANTERIOR ES HIJO DEL BODY Y CAMBIO LA FUENTE
+
+  // ------------Incluye un elemento div que haga de tabla.
+  var divTabla = document.createElement("div");
+  divTabla.setAttribute("class","tabla");
+  divTabla.style.display = "table"; //ESTILO TABLA
+  document.body.appendChild(divTabla);
+
+  // ----------------Incluye un elemento div por cada fila de la tabla.
+  for (var i = 0; i < StarWarsFilms.length; i++) {
+    var divFila = document.createElement("div");
+    divFila.setAttribute("class","fila");
+    divFila.style.display = "table-row"; //ESTILO TABLA
+    divTabla.appendChild(divFila);
+  }
+
+
+  document.body.appendChild(divTabla);
+
+  // Incluye el contenido del objeto incorporando elementos div’s por cada celda de la tabla.
+  // Aplica la clase columna a los div’s que hacen de celdas para que tengan el aspecto de la imagen.
+
+
+  var cont = 0;
+  /*Recorro el array de objetos:*/
+  StarWarsFilms.forEach(function(Peli){
+    var fil = document.getElementsByClassName('fila')[cont];
+    cont++;
+    /*Recorro los campos del objeto*/
+    for (camp in Peli){
+
+      var divCelda = document.createElement("div");
+      divCelda.setAttribute("class",camp);
+      divCelda.style.display = "table-cell"; //ESTILO TABLA
+      fil.appendChild(divCelda);
+
+
+      if (cont == 1) {
+
+          var value = document.createTextNode(camp);
+        
+      } else {
+          var value = document.createTextNode(Peli[camp]);
+      }
+
+
+
+
+
+      // PONGO DATOS DENTRO DE LAS CELDAS
+
+      fil.appendChild(value);
+
+
+    }
+  });
+
+document.body.appendChild(divTabla);
+
+/*Recorro el array de objetos:*/
+StarWarsFilms.forEach(function(objectoPeli){
+  /*Recorro los campos del objeto*/
+  for (campo in objectoPeli){
+    console.log("El " + campo + " de la película es : " + objectoPeli[campo]);
+  }
+});
+
+
+} //Cierro cargaInfo
+</script>
+</head>
+<body>
+</body>
+</html>
