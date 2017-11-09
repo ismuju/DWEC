@@ -59,11 +59,12 @@ onload = function cargaInfo(){
 			var fil = document.getElementsByClassName('fila')[0];
 			for (campo in Peli){
 				var divCelda = document.createElement("div");
-				divCelda.setAttribute("class",campo);
+				divCelda.setAttribute("class","columna");
 				divCelda.style.display = "table-cell"; //ESTILO TABLA
+				divCelda.style.fontWeight = "bold"; //ESTILO TABLA
 				fil.appendChild(divCelda);
 				var value = document.createTextNode(campo);
-				fil.appendChild(value);
+				divCelda.appendChild(value);
 			}
 			cell = false;
 		}
@@ -74,29 +75,50 @@ onload = function cargaInfo(){
     /*Recorro los campos del objeto*/
     for (camp in Peli){
 			var divCelda = document.createElement("div");
-			divCelda.setAttribute("class",camp);
+			divCelda.setAttribute("class","columna");
 			divCelda.style.display = "table-cell"; //ESTILO TABLA
-			divCelda.style.border = "1px solid black"; //ESTILO TABLA
+
 			fil.appendChild(divCelda);
 			var value = document.createTextNode(Peli[camp]);
 
       // PONGO DATOS DENTRO DE LAS CELDAS
-      fil.appendChild(value);
+      divCelda.appendChild(value);
     }
   });
 document.body.appendChild(divTabla);
 
 
+var StarWarsCarteles=[
+	{imagen: "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg", imdb:"http://www.imdb.com/title/tt2527336/?ref_=fn_tt_tt_2"},
+	{imagen: "https://images-na.ssl-images-amazon.com/images/M/MV5BOGJlYjUwMzgtNDdhNy00YWZiLTg4M2UtZGYxNGJmMGJkYjM0XkEyXkFqcGdeQXVyMjg5NDMwMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", imdb:"http://www.imdb.com/title/tt2930604/?ref_=fn_tt_tt_3"},
+	{imagen: "https://images-na.ssl-images-amazon.com/images/M/MV5BNzg1OWY4OWYtYzY5NC00ODg5LWIxM2EtZjdjNjE4N2NmYzE4XkEyXkFqcGdeQXVyMjg5NDMwMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", imdb:"http://www.imdb.com/title/tt3778644/?ref_=fn_tt_tt_4"},
+	{imagen: "https://images-na.ssl-images-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_UX182_CR0,0,182,268_AL_.jpg", imdb:"http://www.imdb.com/title/tt2488496/?ref_=fn_tt_tt_5"},
+	{imagen: "https://images-na.ssl-images-amazon.com/images/M/MV5BYTFlZTIxMWQtZmY0Mi00YWM5LWJkYzAtZmY3ZDkwZDc0NWU0XkEyXkFqcGdeQXVyMjg5NDMwMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg", imdb:"http://www.imdb.com/title/tt0458290/?ref_=fn_tt_tt_6"},
+	{imagen: "https://images-na.ssl-images-amazon.com/images/M/MV5BYTUwNTdiMzMtNThmNS00ODUzLThlMDMtMTM5Y2JkNWJjOGQ2XkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg", imdb:"http://www.imdb.com/title/tt0076759/?ref_=fn_tt_tt_8"},
+	{imagen: "http://www.imdb.com/title/tt0120915/?ref_=fn_tt_tt_13", imdb:"http://www.imdb.com/title/tt0120915/?ref_=fn_tt_tt_13"},
+     ];
 
 
+	 /*Recorro el array de objetos:*/
 
-/*Recorro el array de objetos:*/
-StarWarsFilms.forEach(function(objectoPeli){
-  /*Recorro los campos del objeto*/
-  for (campo in objectoPeli){
-    console.log("El " + campo + " de la película es : " + objectoPeli[campo]);
-  }
-});
+	 // SACAR IMAGEN CON ENLACES
+   StarWarsCarteles.forEach(function(Imagen){
+					var enlace = document.createElement("a");
+					enlace.setAttribute("href",Imagen["imdb"]);
+					enlace.setAttribute("target","_blank");
+					document.body.appendChild(enlace);
+
+					var img = document.createElement("img");
+					img.setAttribute("src",Imagen["imagen"]);
+					img.setAttribute("width","150px");
+					img.setAttribute("heigth","150px");
+
+					enlace.appendChild(img);
+
+
+		});
+
+
 
 
 } //Cierro cargaInfo
