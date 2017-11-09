@@ -38,7 +38,7 @@ onload = function cargaInfo(){
   document.body.appendChild(divTabla);
 
   // ----------------Incluye un elemento div por cada fila de la tabla.
-  for (var i = 0; i < StarWarsFilms.length; i++) {
+  for (var i = 0; i < StarWarsFilms.length+1; i++) { //SUMO 1 PARA LA FILA DEL TITULO
     var divFila = document.createElement("div");
     divFila.setAttribute("class","fila");
     divFila.style.display = "table-row"; //ESTILO TABLA
@@ -50,43 +50,45 @@ onload = function cargaInfo(){
 
   // Incluye el contenido del objeto incorporando elementos div’s por cada celda de la tabla.
   // Aplica la clase columna a los div’s que hacen de celdas para que tengan el aspecto de la imagen.
-
-
-  var cont = 0;
+  var cont = 1;
+	var cell = true;
   /*Recorro el array de objetos:*/
   StarWarsFilms.forEach(function(Peli){
+		// PINTO PRIMERO LOS TITULOS EN LA COLUMNA 0
+		if (cell) {
+			var fil = document.getElementsByClassName('fila')[0];
+			for (campo in Peli){
+				var divCelda = document.createElement("div");
+				divCelda.setAttribute("class",campo);
+				divCelda.style.display = "table-cell"; //ESTILO TABLA
+				fil.appendChild(divCelda);
+				var value = document.createTextNode(campo);
+				fil.appendChild(value);
+			}
+			cell = false;
+		}
+
     var fil = document.getElementsByClassName('fila')[cont];
-    cont++;
+		cont++;
+
     /*Recorro los campos del objeto*/
     for (camp in Peli){
-
-      var divCelda = document.createElement("div");
-      divCelda.setAttribute("class",camp);
-      divCelda.style.display = "table-cell"; //ESTILO TABLA
-      fil.appendChild(divCelda);
-
-
-      if (cont == 1) {
-
-          var value = document.createTextNode(camp);
-        
-      } else {
-          var value = document.createTextNode(Peli[camp]);
-      }
-
-
-
-
+			var divCelda = document.createElement("div");
+			divCelda.setAttribute("class",camp);
+			divCelda.style.display = "table-cell"; //ESTILO TABLA
+			divCelda.style.border = "1px solid black"; //ESTILO TABLA
+			fil.appendChild(divCelda);
+			var value = document.createTextNode(Peli[camp]);
 
       // PONGO DATOS DENTRO DE LAS CELDAS
-
       fil.appendChild(value);
-
-
     }
   });
-
 document.body.appendChild(divTabla);
+
+
+
+
 
 /*Recorro el array de objetos:*/
 StarWarsFilms.forEach(function(objectoPeli){
