@@ -3,15 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title>Ejercicio 1</title>
-    <!-- 1. Crea una web que contenga elementos p, div, h1, h2 y h3 con texto que cambiarán su
-    contenido cuando se produzca un evento de la siguiente manera:
-      a. Incluye una manera distinta de asociar la función de manejo de eventos para cada elemento.
-      b. Además, escoge un evento de ratón distinto para cada elemento salvo para el elemento
-      div que debe tener asociado el evento del menú secundario.
-      c. Impide que el menú secundario haga la acción que tiene asociada por defecto -->
   </head>
   <body>
 
+    <script type="text/javascript">
+      // 1. Crea una web que contenga elementos p, div, h1, h2 y h3 con texto que cambiarán su
+      // contenido cuando se produzca un evento de la siguiente manera:
+      //   a. Incluye una manera distinta de asociar la función de manejo de eventos para cada elemento.
+      //   b. Además, escoge un evento de ratón distinto para cada elemento salvo para el elemento
+      //   div que debe tener asociado el evento del menú secundario.
+      //   c. Impide que el menú secundario haga la acción que tiene asociada por defecto
+
+      addEventListener("DOMContentLoaded",function(){
+
+        //EVENTO CUANDO HACE CLICK SOBRE P
+        document.getElementsByTagName('p')[0].onclick = function() {
+          document.getElementsByTagName('p')[0].innerHTML = "Evento onclick";
+        }
+
+        //CUANDO EL USUARIO HACE CLICK DERECHO SOBRE EL ELEMENTO DIV
+        document.querySelector("div").oncontextmenu = function(e){
+          e.preventDefault();
+          document.querySelector("div").innerHTML = "Evento oncontextmenu";
+        }
+
+        //CUANDO HACE DOBLE CLICK SOBRE EL H1
+        document.querySelector("h1").ondblclick = function(){
+          document.querySelector("h1").innerHTML = "Evento ondblclick";
+        }
+
+        //CUANDO PASA EL CURSOR POR ENCIMA DEL H2
+        document.querySelector("h2").onmouseenter = function(){
+          document.querySelector("h2").innerHTML = "Evento onmouseenter";
+        }
+
+
+        //CUANDO PASA EL CURSOR POR ENCIMA DEL H3
+        document.querySelector("h3").onmouseover = function(){
+          document.querySelector("h3").innerHTML = "Evento onmouseover";
+        }
+
+        //QUITAR CLICK DERECHO DEL RATÓN EN TODA LA PAGINA
+        oncontextmenu = function(e){
+          e.preventDefault();
+        }
+
+
+      });
+
+
+    </script>
 
     <p>Esto es un parrafo</p>
     <div>Caja Div</div>
@@ -20,13 +61,5 @@
     <h3>Titulo h3</h3>
 
 
-    <script type="text/javascript">
-
-document.getElementsByTagName('p')[0].onclick =
-function() {
-alert("Click en imagen");
-}
-
-    </script>
   </body>
 </html>
