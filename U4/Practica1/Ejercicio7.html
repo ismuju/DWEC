@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 7</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 7. Crea una web que muestre la tecla y el carácter que es pulsado (por ejemplo, esta web tiene una
+      //   funcionalidad similar: http://keycode.info/), y que indique por consola si es un carácter especial.
+
+      onload = function() {
+        onkeydown = mostrarCaracterEspecial;
+        onkeyup = mostrarInformacionCaracter;
+      }
+
+      function mostrarInformacionCaracter(e) {
+        var mensaje = '';
+        mensaje = "<h1>" + e.keyCode + "</h1>" +
+                  "<h5>" + e.key + "</h5>";
+        control.innerHTML = mensaje;
+      }
+
+      var especial;
+      function mostrarCaracterEspecial(e){
+        //Todas las teclas generan un keydown. Así distingo si es especial
+        especial = e.altKey || e.ctrlKey || e.shiftKey || e.metaKey;
+        if (especial){
+          console.info('Es un caracter especial.');
+        }
+      }
+
+    </script>
+    <center><br><br>
+      <div id="control"> </div><br><br>
+      <h3>Ejemplo JavaScript: pulse una tecla</h3>
+    </center>
+
+
+  </body>
+</html>
