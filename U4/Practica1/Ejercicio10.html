@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 10</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 10. Realizar una web que incluya una imagen y un selector con una lista de 4 opciones diferentes,
+      // de manera que al seleccionar un elemento de la lista, se actualice automáticamente la imagen del documento.
+      // No debe existir un botón.
+
+        function cambiar(){
+          var miIMG = document.getElementById('img');
+          var transformacion = document.getElementById('tranformacion').value;
+          miIMG.src = "img/" + transformacion + ".png";
+        }
+
+    </script>
+    <center>
+      <img id="img" width="260" height="400" src="img/Goku.png" alt="">
+      <br><br>
+      <select onchange="cambiar()" id="tranformacion">
+        <option disabled selected value> -- SELECCIONA UNA TRANSFORMACIÓN -- </option>
+        <option value="s1">SuperSaiyan 1</option>
+        <option value="s2">SuperSaiyan 2</option>
+        <option value="s3">SuperSaiyan 3</option>
+        <option value="s4">SuperSaiyan 4</option>
+      </select>
+    </center>
+  </body>
+</html>
