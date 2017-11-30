@@ -5,6 +5,46 @@
     <title>Ejercicio 8</title>
   </head>
   <body>
+    <script type="text/javascript">
+      // Realiza una web que muestre una imagen con un ancho de 150px y que permita hacer
+      // zoom hasta 1024px. El zoom se hará en incrementos de 25px, cuando el usuario pulse
+      // las teclas + y se deshará cuando pulse –.
 
+      onload = function() {
+        onkeyup = zoom;
+      }
+
+      function zoom(e) {
+        if (e.key == '+') {
+          zoomin()
+        }else if (e.key == '-') {
+          zoomout()
+        }
+      }
+
+      function zoomin(){
+           var myImg = document.getElementById("goku");
+           var currWidth = myImg.clientWidth;
+           if(currWidth >= 1024){
+               alert("Tamaño máximo alcanzado.");
+           } else{
+               myImg.style.width = (currWidth + 25) + "px";
+           }
+       }
+       function zoomout(){
+           var myImg = document.getElementById("goku");
+           var currWidth = myImg.clientWidth;
+           if(currWidth == 150){
+               alert("Mínimo tamaño alcanzado.");
+           } else{
+               myImg.style.width = (currWidth - 25) + "px";
+           }
+       }
+
+
+    </script>
+    <center>
+      <img id="goku" width="150px" src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/gallery_big/public/media/image/2017/10/goku-limit-breaker_6.jpg?itok=Ujcoghww" alt="">
+    </center>
   </body>
 </html>
