@@ -5,6 +5,29 @@
     <title>Ejercicio 4</title>
   </head>
   <body>
-    
+    <script type="text/javascript">
+      // 4. Utilizando el manejo de eventos del DOM 2, realiza una página que muestre una imagen
+      // de manera que esa imagen cambie cuando el ratón pase por encima de la imagen y que
+      // vuelva a cambiar cuando salga de ella.
+
+
+      addEventListener("DOMContentLoaded",function(){
+
+       var miIMG = document.getElementsByTagName('img')[0];
+
+       miIMG.addEventListener("mouseover",cambiar);
+       function cambiar(e){
+         this.src = "https://img13.deviantart.net/1c98/i/2016/100/0/7/super_saiyan_2_goku__budokai_3__alt_palette__2_by_rayzorblade189-d9yek4q.png";
+       }
+
+        miIMG.addEventListener("mouseout",function(e){
+          this.src = "http://fotosdegoku.com/wp-content/uploads/2014/08/Im%C3%A1genes-Goku-rap..png";
+        });
+      });
+
+    </script>
+    <center>
+      <img id="img" width="460" height="400" src="http://fotosdegoku.com/wp-content/uploads/2014/08/Im%C3%A1genes-Goku-rap..png" alt="">
+    </center>
   </body>
 </html>

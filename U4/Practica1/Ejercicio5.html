@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 5. Incluye en la web anterior, un enlace con la frase “Deshabilitar cambio de imagen”
+      // con el atributo href=”#nonavegar”. Cuando pulsemos en el enlace, deben deshabilitarse
+      // los eventos anteriores y además el usuario no debe navegar al href del enlace.
+
+
+      addEventListener("DOMContentLoaded",function(){
+
+       var miIMG = document.getElementsByTagName('img')[0];
+
+        miIMG.addEventListener("mouseover",cambiar);
+        function cambiar(e){
+          this.src = "https://img13.deviantart.net/1c98/i/2016/100/0/7/super_saiyan_2_goku__budokai_3__alt_palette__2_by_rayzorblade189-d9yek4q.png";
+        }
+
+        miIMG.addEventListener("mouseout",function(e){
+          this.src = "http://fotosdegoku.com/wp-content/uploads/2014/08/Im%C3%A1genes-Goku-rap..png";
+        });
+
+
+        var miA = document.getElementsByTagName('a')[0];
+
+        miA.addEventListener('click',function(e){
+          miIMG.removeEventListener('mouseover',cambiar);
+          e.preventDefault();
+        });
+
+      });
+
+    </script>
+    <center>
+      <img id="img" width="460" height="400" src="http://fotosdegoku.com/wp-content/uploads/2014/08/Im%C3%A1genes-Goku-rap..png" alt="">
+      <br><a href="#nonavegar">Deshabilitar cambio de imagen</a>
+    </center>
+  </body>
+</html>
