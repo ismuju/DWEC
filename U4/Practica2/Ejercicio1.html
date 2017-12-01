@@ -9,7 +9,7 @@
         text-align: center;
       }
 
-      div{
+      .caja{
         width: 200px;
         height: 200px;
         margin: 10px;
@@ -63,35 +63,78 @@
           border-color: #555 transparent transparent transparent;
       }
 
-      .tooltip:hover .tooltiptext {
-          visibility: visible;
-          opacity: 1;
+      .tooltiptext{
+        visibility: hidden;
       }
+
+
+      .tooltip .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+
 
     </style>
   </head>
   <body>
     <script type="text/javascript">
 
-      addEventListener("DOMContentLoaded",function(){
+      var regalo = false;
+      addEventListener("click",function(e){
+        if (!regalo) {
 
+          var id = e.target.id;
+          document.getElementById(id).style.visibility = "hidden";
+          document.getElementById(id).classList.remove("tooltip");
 
+          var miIMG = document.getElementById('img'+ id);
+          miIMG.style.visibility = "visible";
+          miIMG.src = ("img/" + id+".jpg");
+
+          if (id == "uno") {
+            alert("Te ha tocado una casa");
+          } else if (id == "dos") {
+            alert("Te ha tocado un saco de dolars");
+          } else if (id == "tres") {
+            alert("Te ha tocado una mierda");
+          }
+
+          regalo=true;
+        }else {
+          alert('No seas avaricioso.');
+        }
       });
-      // e.target.id
+
+
+
+      addEventListener("contextmenu",function(e){
+          e.preventDefault();
+          var id = e.target.id;
+          document.getElementById(id).className += " tooltip";
+      });
     </script>
 
 
     <h1>Escoge un regalo</h1>
 
-    <div class="tooltip">?
-      <span class="tooltiptext">Pista</span>
-    </div>
-    <div class="tooltip">?
-      <span class="tooltiptext">Pista</span>
-    </div>
-    <div class="tooltip">?
-      <span class="tooltiptext">Pista</span>
-    </div>
+
+      <div class="caja" id="uno">?
+        <img id="imguno" src="" alt="">
+        <span class="tooltiptext">Ladrillo a ladrillo..</span>
+      </div>
+
+
+      <div class="caja" id="dos">?
+        <img id="imgdos" src="" alt="">
+        <span class="tooltiptext">Todo el mundo quiere</span>
+      </div>
+
+
+      <div class="caja" id="tres">?
+        <img id="imgtres" src="" alt="">
+        <span class="tooltiptext">Huele mal</span>
+      </div>
+
 
   </body>
 </html>
