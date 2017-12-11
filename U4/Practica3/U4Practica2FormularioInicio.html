@@ -19,37 +19,12 @@
           e.target.style.outline = "none";
         }
 
-
-        nombre.onfocus = ponFoco; //BORDE MORADO NOMBRE
-        nombre.onblur = quitaFoco;
-
-        apellidos.onfocus = ponFoco; //BORDE MORADO APELLIDOS
-        apellidos.onblur = quitaFoco;
-
-        email.onfocus = ponFoco; //BORDE MORADO EMAIL
-        email.onblur = quitaFoco;
-
-        emailRepe.onfocus = ponFoco; //BORDE MORADO EMAILREPE
-        emailRepe.onblur = quitaFoco;
-
-        dni.onfocus = ponFoco; //BORDE MORADO DNI
-        dni.onblur = quitaFoco;
-
-        fecha.onfocus = ponFoco; //BORDE MORADO FECHA
-        fecha.onblur = quitaFoco;
-
-        selector.onfocus = ponFoco; //BORDE MORADO SECCION
-        selector.onblur = quitaFoco;
-
-        efectivo.onfocus = ponFoco; //BORDE MORADO efectivo
-        efectivo.onblur = quitaFoco;
-
-        tarjeta.onfocus = ponFoco; //BORDE MORADO tarjeta
-        tarjeta.onblur = quitaFoco;
-
-        cond.onfocus = ponFoco; //BORDE MORADO
-        cond.onblur = quitaFoco;
-
+        var input = document.querySelectorAll("input, select");
+        for (var i = 0; i < input.length; i++) {
+          input[i].onfocus = ponFoco;
+          input[i].onblur = quitaFoco;
+        }
+        
 
       var formulario = document.forms[0];
       formulario.onsubmit = function(e){
