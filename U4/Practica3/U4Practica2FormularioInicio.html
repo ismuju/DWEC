@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>U4 Práctica 2: Formulario</title>
+    <link rel="stylesheet" href="css/estiloEjFormulario.css">
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      // Cuando pongamos el foco en un elemento, este elemento pasará a tener únicamente un borde morado que perderá cuando pierda el foco.
+
+      // b. Antes de enviar el formulario, comprueba que:
+      //   i. el nombre y el apellido no son nulos y tiene caracteres que tienen sentido para un nombre y apellidos.
+      //   ii. el email tiene un formato de email válido y coincide con el email repetido.
+      //   iii. el DNI está formado por 8 caracteres seguidos de una letra mayúscula o minúscula y es un DNI válido.
+      //   iv. el usuario es mayor de 18 años (comprueba teniendo en cuenta años, meses y días).
+      //   v. se ha escogido una sección favorita.
+      //   vi. se ha escogido un modo de pago.
+      //   vii. se han aceptado las condiciones de alta
+
+
+
+      onload = function(){
+
+        //BORDE MORADO
+        function ponFoco(e){
+          e.target.style.outline = "purple solid 2px";
+        }
+
+        var errList=""; //GUARDO LA LISTA DE TODOS LOS ERRORES
+
+
+        //--------------------------NOMBRE---------------------
+        nombre.onfocus = ponFoco; //BORDE MORADO NOMBRE
+        nombre.onblur = function quitaFocoUsuario(e){
+          nombre.style.outline = "none"; //Quitamos el estilo
+          if (nombre.value == null || nombre.value.trim().length == 0 || !(/^\S+[\s?\S+]*$/.test(nombre)) ){
+            errList +=  "El campo usuario está vacío. Debes introducir un valor <br/>"; //MENSAJE DE ERROR
+
+            nombre.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+        }
+
+        //--------------------------APELLIDOS---------------------
+        apellidos.onfocus = ponFoco; //BORDE MORADO APELLIDOS
+        apellidos.onblur = function quitaFocoUsuario(e){
+          apellidos.style.outline = "none"; //Quitamos el estilo
+          if (apellidos.value == null || apellidos.value.trim().length == 0 || !(/^\S+[\s?\S+]*$/.test(apellidos)) ){
+            errList +=  "El campo Apellidos está vacío. Debes introducir un valor <br/>"; //MENSAJE DE ERROR
+
+            apellidos.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+        }
+
+        //--------------------------EMAIL---------------------
+        email.onfocus = ponFoco; //BORDE MORADO EMAIL
+        email.onblur = function quitaFocoUsuario(e){
+          e.target.style.outline = "none"; //Quitamos el estilo
+
+          if (e.target.value != null || e.target.value.trim().length != 0){ //MIRAMOS SI ESTA VACIO
+            if ( !/^\w+@\w+\.\w+$/.test(e.target.value) ){ //SI ES INCORRECTO
+              errList += "El email es incorrecto <br/>";
+              e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+          }else {
+            errList +=  "El email esta vacio <br/>"; //MENSAJE DE ERROR SI ESTA VACIO
+            e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+
+        }
+
+
+
+        //---------------------------EMAILREPE---------------------
+        emailRepe.onfocus = ponFoco; //BORDE MORADO
+        emailRepe.onblur = function quitaFocoUsuario(e){
+          e.target.style.outline = "none"; //Quitamos el estilo
+
+          if (e.target.value != null || e.target.value.trim().length != 0){ //MIRAMOS SI ESTA VACIO
+            if ( !/^\w+@\w+\.\w+$/.test(e.target.value) ){ //SI ES INCORRECTO
+              errList += "El repetir email es incorrecto <br/>";
+              e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }else {
+              var email = document.getElementById("email").value;
+              var emailRepe = document.getElementById("emailRepe").value;
+              if(email != emailRepe){
+                errList += "El email repetido debe coincidir con el primer email que introdujo <br/>";
+                e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+                ret = false;
+              }
+            }
+          }else {
+            errList +=  "El campo emailRepe está vacío. Debes introducir un valor <br/>"; //MENSAJE DE ERROR SI ESTA VACIO
+            e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+        }
+
+
+        //--------------------------DNI---------------------
+        dni.onfocus = ponFoco; //BORDE MORADO
+        dni.onblur = function quitaFocoUsuario(e){
+          e.target.style.outline = "none"; //Quitamos el estilo
+          if (e.target.value != null || e.target.value.trim().length != 0){
+              valor = document.getElementById("dni").value;
+              var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'];
+              if( !(/^\d{8}[A-Z]$/.test(valor)) ){
+                errList +=  "Error en campo DNI <br/>"; //MENSAJE DE ERROR
+                e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+                return false;
+              }
+              if(valor.charAt(8) != letras[(valor.substring(0, 8))%23]){
+                errList +=  "Error en campo DNI <br/>"; //MENSAJE DE ERROR
+                e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+                return false;
+              }
+              return true;
+
+          }else {
+            errList +=  "Campo DNI vacio<br/>"; //MENSAJE DE ERROR
+            e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+        }
+
+
+
+        //--------------------------FECHA---------------------
+        fecha.onfocus = ponFoco; //BORDE MORADO
+
+        fecha.onblur = function quitaFocoUsuario(e){
+          e.target.style.outline = "none"; //Quitamos el estilo
+          if (e.target.value != null || e.target.value.trim().length != 0){
+
+            //validamos la fecha
+            var fecha = (document.getElementsByName('fecha')[0].value).split('-');
+            var ano=fecha[0];
+            var mes=fecha[1];// de 0 a 11
+            var dia=fecha[2];// 1 a 31
+            console.log(dia + " " + mes + " " + " " + ano);
+            var nf= new Date(ano,(mes - 1),dia);
+            console.log(nf);
+
+            var hoy = new Date();
+            //resto los años de las dos fechas
+            var edad = hoy.getFullYear()- ano - 1; //-1 porque no se si ha cumplido años ya este año
+            //si resto los meses y me da mayor que 0, ha cumplido años
+            if (hoy.getMonth() + 1 - mes > 0){
+                edad++;
+            }
+            //si resto los dias y me da menor que 0 entonces no ha cumplido años.
+            //si da mayor o igual si ha cumplido
+            if (hoy.getUTCDate() - dia >= 0){
+                edad++;
+            }
+            console.log("Edad " + edad);
+            if ( isNaN(nf) || dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 0 || ano >= hoy.getFullYear()){
+              errList += "La fecha es errónea <br/>"
+              e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }else if (edad < 18){
+              errList += "Debe ser mayor de edad para inscribirse <br/>"
+              e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+          }else {
+            errList += "Introduce la fecha <br/>"
+            e.target.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+
+        }
+
+
+
+        //--------------------------SECCION FAVORITA---------------------
+        selector.onfocus = ponFoco; //BORDE MORADO
+        selector.onblur = function quitaFocoUsuario(e){
+          selector.style.outline = "none"; //Quitamos el estilo
+          var prov = document.getElementsByName("seccion")[0].selectedIndex;
+          if (prov == null || prov == 0){
+            errList += "Escoja una sección.<br/>";
+            selector.style.outline = "red solid 2px"; //Ponemos el borde rojo
+            ret = false;
+          }
+        }
+
+
+
+        //--------------------------MODO DE PAGO---------------------
+        efectivo.onfocus = ponFoco; //BORDE MORADO efectivo
+        efectivo.onblur = function quitaFocoUsuario(e){
+          e.target.style.outline = "none"; //Quitamos el estilo
+        }
+
+        tarjeta.onfocus = ponFoco; //BORDE MORADO tarjeta
+        tarjeta.onblur = function quitaFocoUsuario(e){
+          e.target.style.outline = "none"; //Quitamos el estilo
+
+        }
+
+        //validamos el radiobutton
+        // var escogeNick = formulario.radio.value;
+        // if (escogeNick != "efectivo" && escogeNick != "tarjeta"){
+        //
+        //   errList += "Es necesario que indique si quiere emplear su nombre o prefiere ser anónimo en nuestro foro<br/>";
+        //   ret = false;
+        // }
+
+        //--------------------------CONDICIONES DE ALTA---------------------
+        cond.onfocus = ponFoco; //BORDE MORADO
+        cond.onblur = function quitaFocoUsuario(e){
+          cond.style.outline = "none"; //Quitamos el estilo
+          if (!cond.checked){
+            errList +=  "Debes aceptar las condiciones de alta."; //MENSAJE DE ERROR
+
+            cond.style.outline = "red solid 2px"; //Ponemos el borde rojo
+          }
+        }
+
+
+
+
+        var formulario = document.getElementById('formulario');
+
+        formulario.onsubmit = function validacion(){
+            //Campo donde pondré los errores:
+            var err = document.getElementsByClassName('errores')[0];
+
+
+
+            //Ret es lo que devolverá return cuando acabe la validación
+            // var ret = true;
+            //
+            // if (ret){
+            //   errList = "Tu petición se ha enviado correctamente";
+            //   err.style.color="blue";
+            // }else{
+            //   err.style.color="red";
+            // }
+            err.innerHTML = errList;
+            return ret;
+        }
+
+
+
+    }
+
+    </script>
+
+
+
+    <form id="formulario" action="#" method="post" enctype="application/x-www-urlencoded">
+    <!--Zona info personal-->
+    <h1>Formulario alta</h1>
+    <fieldset>
+    <legend>Información personal</legend>
+    <div>
+    <label for="nombre">Nombre*:</label>
+    <input type="text" name="nombre" id="nombre" autofocus="autofocus" placeholder="Introduce el nombre..."></input>
+    </div>
+
+    <div>
+    <label for="apellidos">Apellidos*:</label>
+    <input type="text" name="apellidos" id="apellidos"></input>
+    </div>
+
+    <div>
+    <label for="email">Email*:</label>
+    <input type="email" name="email" id="email"></input>
+    </div>
+
+    <div>
+    <label for="email">Repetir email*:</label>
+    <input type="email" name="email" id="emailRepe"></input>
+    </div>
+
+    <div>
+    <label for="dni">DNI:</label>
+    <input type="text" name="dni" id="dni"></input>
+    </div>
+
+    <div id="inputFecha">
+    <label for="fecha">Fecha nacimiento*:</label>
+    <input type="date" name="fecha" id="fecha"></input>
+    </div>
+
+    <div id="seccion">
+    <label for="selector">Sección favorita*:</label>
+    <select name="seccion" id="selector">
+    <option value="0">Escoge una sección </option>
+    <option value="discos">Discos</option>
+    <option value="libros">Libros</option>
+    <option value="tecnologia">Tecnología</option>
+    </select>
+    </div>
+    <div>
+      <p>Modo preferente de pago*:</p>
+    </div>
+    <div id="radio">
+      <label for="efectivo">Efectivo
+      <input type="radio" name="efectivo" id="efectivo" value="efectivo"></input>
+      </label>
+      <label for="tarjeta">Tarjeta
+      <input type="radio" name="tarjeta" id="tarjeta" value="tarjeta"></input>
+      </label>
+    </div>
+
+    </fieldset>
+
+    <!--Zona checks y aceptar-->
+    <label class="check">
+    <input type="checkbox" name="cond" id="cond"></input>
+    <p> Acepto las condiciones de alta</p>
+    </label>
+
+    <input type="submit" value="Enviar" id="enviar"></input>
+
+    <div id="nota">Nota: los campos marcados con "*" son obligatorios</div>
+
+    <!-- Incluyo un div vacío para poner los errores del formulario -->
+    <div class="errores"></div>
+    </form>
+
+  </body>
+</html>
