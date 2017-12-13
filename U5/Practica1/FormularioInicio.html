@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>U4 Práctica 2: Formulario</title>
+    <link rel="stylesheet" href="css/estiloEjFormulario.css">
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      onload = function(){
+
+      var formulario = document.forms[0];
+      formulario.onsubmit = function(e){
+          var err = document.getElementsByClassName('errores')[0];
+          var errList ="";
+          var ret = true;
+
+          var input = document.querySelectorAll("input, select");
+          for (var i = 0; i < input.length; i++) {
+            input[i].style.outline = "none";
+          }
+
+            //--------------------------NOMBRE---------------------
+            if (nombre.value == null || nombre.value.trim().length == 0){
+              errList +=  "El campo Nombre está vacío. Debes introducir un valor <br/>"; //MENSAJE DE ERROR
+              nombre.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+            //--------------------------APELLIDOS---------------------
+            if (apellidos.value == null || apellidos.value.trim().length == 0){
+              errList +=  "El campo Apellidos está vacío. Debes introducir un valor <br/>"; //MENSAJE DE ERROR
+              apellidos.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+            //--------------------------EMAIL---------------------
+            var email = document.getElementsByName("email")[0];
+            if (email.value == null || email.value.trim().length == 0){ //MIRAMOS SI ESTA VACIO
+              errList +=  "El email esta vacio<br/>"; //MENSAJE DE ERROR SI ESTA VACIO
+              email.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+            //---------------------------EMAILREPE---------------------
+            var emailRepe = document.getElementById("emailRepe");
+            if (emailRepe.value == null || emailRepe.value.trim().length == 0){ //MIRAMOS SI ESTA VACIO
+              errList +=  "El campo repetir email está vacío. Debes introducir un valor <br/>"; //MENSAJE DE ERROR SI ESTA VACIO
+              emailRepe.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+            //--------------------------DNI---------------------
+            var dni = document.getElementById("dni");
+            if (dni.value == null || dni.value.trim().length == 0){
+              errList +=  "Campo DNI vacio<br/>"; //MENSAJE DE ERROR
+              dni.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+
+
+            //--------------------------FECHA---------------------
+            //validamos la fecha
+            var fechaRoja = document.getElementsByName('fecha')[0];
+            var fecha = (document.getElementsByName('fecha')[0].value).split('-');
+            var ano=fecha[0];
+            var mes=fecha[1];// de 0 a 11
+            var dia=fecha[2];// 1 a 31
+            console.log(dia + " " + mes + " " + " " + ano);
+            var nf= new Date(ano,(mes - 1),dia);
+            console.log(nf);
+
+            var hoy = new Date();
+            //resto los años de las dos fechas
+           	var edad = hoy.getFullYear()- ano - 1; //-1 porque no se si ha cumplido años ya este año
+           	//si resto los meses y me da mayor que 0, ha cumplido años
+           	if (hoy.getMonth() + 1 - mes > 0){
+              	edad++;
+            }
+           	//si resto los dias y me da menor que 0 entonces no ha cumplido años.
+            //si da mayor o igual si ha cumplido
+           	if (hoy.getUTCDate() - dia >= 0){
+              	edad++;
+            }
+            console.log("Edad " + edad);
+            if ( isNaN(nf) || dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 0 || ano >= hoy.getFullYear()){
+              errList += "La fecha es errónea <br/>"
+              fechaRoja.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+            //--------------------------SECCION FAVORITA---------------------
+            var secRoja = document.getElementsByName("seccion")[0];
+            var sec = document.getElementsByName("seccion")[0].selectedIndex;
+            if (sec == null || sec == 0){
+              errList += "Escoja una sección.<br/>";
+              secRoja.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+            //--------------------------MODO DE PAGO---------------------
+            var pago = formulario.cond.value;
+            var tarjeta = document.getElementById("tarjeta");
+            var efectivo = document.getElementById("efectivo");
+            if (pago != "efectivo" && pago != "tarjeta"){
+              tarjeta.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              efectivo.style.outline = "red solid 2px"; //Ponemos el borde rojo
+
+              errList += "Es necesario que indique el método de pago<br/>";
+              ret = false;
+            }else {
+              tarjeta.style.outline = "none"; //Quitamos el borde rojo
+              efectivo.style.outline = "none"; //Quitamos el borde rojo
+            }
+
+            //--------------------------CONDICIONES DE ALTA---------------------
+            if (!cond.checked){
+              errList +=  "Debes aceptar las condiciones de alta."; //MENSAJE DE ERROR
+              cond.style.outline = "red solid 2px"; //Ponemos el borde rojo
+              ret = false;
+            }
+
+
+
+            //Crea una cookie si pasamos el nombre, valor y número de días:
+            function setCookie(name,value,days) {
+              if (days) {
+                var date = new Date();
+                date.setTime(date.getTime()+(days*24*60*60*1000));
+                var expires = ";expires="+date.toGMTString();
+              }
+              else var expires = "";
+
+              document.cookie = name+"="+value+expires+";path=/";
+              console.log(document.cookie);
+            }
+
+            //Coge una cookie:
+            function getCookie(name) {
+              var nameEQ = name + "=";
+              var ca = document.cookie.split(';');
+              for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                  if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+              }
+
+
+
+            if (ret){
+              //Justo antes de enviar el formulario, puedes deshabilitar el botón de Envío para que no exista rebote
+              document.getElementById("enviar").value = "Enviando...";
+              document.getElementById("enviar").disabled = true;
+
+
+              // Almacena durante 360días los campos nombre y apellidos
+              //Llamamos a las funciones:
+              setCookie("nombre",nombre.value,360);
+              onload = function(){
+                document.body.innerHTML += "<p>La cookie almacenada es " + getCookie(name) + "</p>";
+              }
+
+              //Llamamos a las funciones:
+              setCookie("apellidos",apellidos.value,360);
+              onload = function(){
+                document.body.innerHTML += "<p>La cookie almacenada es " + getCookie(name) + "</p>";
+              }
+
+              // Almacena de manera permanente (debe estar disponible después de que se cierre la sesión) el valor del email.
+              window.localStorage.Email=email.value;
+
+
+              // Almacena de manera temporal (sólo durante la sesión), el valor del DNI.
+              window.sessionStorage.Dni=dni.value;
+
+              errList = "Tu petición se ha enviado correctamente";
+              err.style.color="blue";
+            }else{
+              err.style.color="red";
+            }
+            err.innerHTML = errList;
+            return ret;
+        }
+
+
+
+    }
+
+    </script>
+
+
+
+    <form id="formulario" action="alta.html" method="post" enctype="application/x-www-urlencoded">
+    <!--Zona info personal-->
+    <h1>Formulario alta</h1>
+    <fieldset>
+    <legend>Información personal</legend>
+    <div>
+    <label for="nombre">Nombre*:</label>
+    <input type="text" name="nombre" id="nombre" autofocus="autofocus" placeholder="Introduce el nombre..."></input>
+    </div>
+
+    <div>
+    <label for="apellidos">Apellidos*:</label>
+    <input type="text" name="apellidos" id="apellidos"></input>
+    </div>
+
+    <div>
+    <label for="email">Email*:</label>
+    <input type="email" name="email" id="email"></input>
+    </div>
+
+    <div>
+    <label for="email">Repetir email*:</label>
+    <input type="email" name="email" id="emailRepe"></input>
+    </div>
+
+    <div>
+    <label for="dni">DNI:</label>
+    <input type="text" name="dni" id="dni"></input>
+    </div>
+
+    <div id="inputFecha">
+    <label for="fecha">Fecha nacimiento*:</label>
+    <input type="date" name="fecha" id="fecha"></input>
+    </div>
+
+    <div id="seccion">
+    <label for="selector">Sección favorita*:</label>
+    <select name="seccion" id="selector">
+    <option value="0">Escoge una sección </option>
+    <option value="discos">Discos</option>
+    <option value="libros">Libros</option>
+    <option value="tecnologia">Tecnología</option>
+    </select>
+    </div>
+    <div>
+      <p>Modo preferente de pago*:</p>
+    </div>
+    <div id="radio">
+      <label for="efectivo">Efectivo
+      <input type="radio" name="cond" id="efectivo" value="efectivo"></input>
+      </label>
+      <label for="tarjeta">Tarjeta
+      <input type="radio" name="cond" id="tarjeta" value="tarjeta"></input>
+      </label>
+    </div>
+
+    </fieldset>
+
+    <!--Zona checks y aceptar-->
+    <label class="check">
+    <input type="checkbox" name="cond" id="cond"></input>
+    <p> Acepto las condiciones de alta</p>
+    </label>
+
+    <input type="submit" value="Enviar" id="enviar"></input>
+
+    <div id="nota">Nota: los campos marcados con "*" son obligatorios</div>
+
+    <!-- Incluyo un div vacío para poner los errores del formulario -->
+    <div class="errores"></div>
+    </form>
+
+  </body>
+</html>

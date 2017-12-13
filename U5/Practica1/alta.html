@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Alta</title>
+  </head>
+  <body>
+    <!-- Una vez almacenado todo, envía el formulario (utilizando action) a la página alta.html. Para ello:
+      i. Crea la página alta.html, empleando HTML, con un título y un texto.
+      ii. Incorpora el js a la página de alta.html para leer el contenido almacenado en cliente sobre el usuario.
+      iii. Personaliza el texto que pongas incluyendo todo lo que sabemos del usuario en ese texto
+      (tendrás que rescatar la información almacenada). -->
+      <script type="text/javascript">
+        onload = function(){
+        //Coge una cookie:
+        function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+          }
+
+
+          var nom = getCookie("nombre");
+          var apell = getCookie("apellidos");
+          var correo = window.localStorage.Email;
+          var dn = window.sessionStorage.Dni;
+
+          var nameApell = document.getElementsByTagName("h2")[0];
+          nameApell.innerHTML = ("Bienvenido " + nom + " " + apell);
+
+          var emailH = document.getElementsByTagName("h2")[1];
+          emailH.innerHTML = ("Correo: " + correo);
+
+          var dniH = document.getElementsByTagName("h2")[2];
+          dniH.innerHTML = ("DNI: " + dn);
+        }
+      </script>
+
+      <h1>Título</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <hr>
+      <h2></h2>
+      <h2></h2>
+      <h2></h2>
+
+  </body>
+</html>
