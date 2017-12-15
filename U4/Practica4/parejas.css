@@ -7,13 +7,13 @@ body {
 }
 
 /*Posición para la tabla dónde se muestran las imagenes*/
-#contenido { 
+#contenido {
 	position: relative;
 }
 
 /*Posición, margen superior, margen izquierdo, tamaño de la fuente
   color y negrita del enlace al final de la página.*/
-#adicional { 
+#adicional {
 	position:absolute;
 	margin-top:15px;
 	margin-left: 400px;
@@ -49,21 +49,21 @@ h1 strong {
 	margin: 0;
 }
 
-/*CSS para las imagenes que están dentro de un td que a su vez están dentro 
+/*CSS para las imagenes que están dentro de un td que a su vez están dentro
    del div con id tablero*/
 #tablero td img {
 	margin: 4px;
 	padding: 0;
-	height: 100px;
-	width : 100px;
+	height: 200px;
+	width : 200px;
 	border: none;
 }
 /*Para cuando se pasa el ratón por encima de las imágenes*/
 #tablero td img:hover {
     margin: 4px;
     padding: 0;
-    height: 98px;
-    width : 98px;
+    height: 196px;
+    width : 196px;
     border: 1px solid red;
 }
 
@@ -71,7 +71,7 @@ h1 strong {
 #datos {
 	position: absolute;
 	top : 0px;
-	left: 480px;
+	left: 880px;
 	padding: 4px 6px;
 	background-color: #c6c6e0;
 	border:1px solid red;
@@ -93,5 +93,3 @@ h1 strong {
 	text-align:right;
 	margin: 2px 0 12px 36px;
 }
-
- 

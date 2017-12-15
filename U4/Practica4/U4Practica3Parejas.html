@@ -3,16 +3,120 @@
   <head>
     <meta charset="utf-8">
     <title>Cada oveja con su pareja</title>
-    <script src="parejas.js" charset="utf-8"></script>
+    <!-- <script src="parejas.js" charset="utf-8"></script> -->
     <link rel="stylesheet" href="parejas.css">
   </head>
   <body>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded',function(){
+
+
+        //POSICIONES ALEATORIAS
+        var array = new Array(12); //CREAMOS ARRAY TAMAÑO 11
+        for (var i = 0; i < array.length; i++) {
+            array[i] = i; //AÑADIR VALORES ARRAY
+        }
+        array.sort(() => Math.random() > 0.5 ? 1 : -1); //DESORDENAR ARRAY
+
+
+        //TABLA DE IMAGENES
+        var imagenes;
+        imagenes += "<table>";
+        var cont=0;
+        for (var i = 0; i < 3; i++) {
+          imagenes += "<tr>";
+          for (var j = 0; j < 4; j++) {
+            imagenes += "<td>";
+            imagenes += '<img src="img/cruz.png" id='+ array[cont] +'>';
+            imagenes += "</td>";
+            cont++;
+          }
+          imagenes += "</tr>";
+
+        }
+        imagenes += "</table>";
+
+        tablero.innerHTML = imagenes;
+
+
+
+
+        //CREO EL EVENTO CLICK PARA CADA IMAGEN
+        var image = document.getElementsByTagName("img");
+        for (var i = 0; i < image.length; i++) {
+          image[i].addEventListener('click',funcionClick1);
+        }
+
+
+        //EJECUTO EL CAMBIO DE IMAGEN Y SEGUIDO QUITO EL EVENTO
+        var descubiertos = new Array(); //CREAMOS ARRAY TAMAÑO 11
+        var movi=0;
+        var aciert=0;
+        movimientos.innerHTML=movi;
+        aciertos.innerHTML=aciert;
+        function funcionClick1(e){
+          e.target.src = "img/" + e.target.id + ".jpg";
+          console.log(e.target.id);
+          descubiertos.push(e.target.id); //GUARDAMOS EL ID DE LOS DESCUBIERTOS
+
+          console.log(descubiertos[0]);
+          if (descubiertos.length == 2) {
+            if ((descubiertos[0]%2 == 0 && descubiertos[1]%2 == 0) || (descubiertos[0]%2 == 1 && descubiertos[1]%2 == 1)) {
+              movimientos.innerHTML=++movi;
+            }else{
+              movimientos.innerHTML=++movi;
+              aciertos.innerHTML=++aciert;
+            }
+            descubiertos.splice(0, 2);
+          }
+
+          e.target.removeEventListener('click',funcionClick1);
+        }
+
+        //CONTADOR SEGUNDOS
+        var segund = 0;
+        var minut = 0;
+        setInterval(function(){
+          segundos.innerHTML=++segund;
+          if (segund == 60) {
+            minutos.innerHTML=++minut;
+            segund=0;
+          }
+
+        }, 1000);
+
+
+        //BOTON REINICIAR BORRA DATOS
+        var formulario = document.forms[0];
+        formulario.onsubmit = function(e){
+          movi=0;
+          aciert=0;
+          segund = 0;
+          minut = 0;
+          segundos.innerHTML=segund;
+          minutos.innerHTML=minut;
+          movimientos.innerHTML=movi;
+          aciertos.innerHTML=aciert;
+
+          e.preventDefault(); //ANULAR EL BOTON
+
+        }
+
+
+
+      });
+    </script>
+
     <div id="pagina">
         <div id="marca">
-        <h1>First Dates Disney</h1>
+        <h1>First Dates Dragon Ball</h1>
     </div>
     <div id="contenido"><!--div para el contenido-->
+
       <div id="tablero">Cargando...</div><!--tablero dónde se carga el tablero con imágenes-->
+
+
       <form name="datos" id="datos" action="parejas.html"> <!--formulario de datos y botón-->
           <div id="fichas"></div>
           <dl>
