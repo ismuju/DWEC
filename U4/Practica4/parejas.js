@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded',function(){
       e.target.src = "img/" + e.target.id + ".jpg";
       e.target.className = "descubierta";
       if (descubiertos.length == 2) {
-        esPareja();
+        setTimeout (esPareja, 100); //PARA QUE SE LLEGUE A VER LA SEGUNDA PAREJA
       }
     }
     setTimeout (todasDescubiertas, 100); //PARA QUE SE LLEGUE A VER LA ULTIMA PAREJA
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     if (!checkPareja()) {
       movimientos.innerHTML=++movi;
-      alert("Prueba de nuevo");
+      // alert("Prueba de nuevo");
 
       for (var i = 0; i < descubiertos.length; i++) {
 
