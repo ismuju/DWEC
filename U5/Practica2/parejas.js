@@ -66,43 +66,111 @@ document.addEventListener('DOMContentLoaded',function(){
     var contDescubiertas = document.getElementsByClassName("descubierta").length;
     if (contDescubiertas == 12) {
       alert("Enorabuena, has descubierto todas las parejas");
-      clearInterval(contador); //PARAMOS EL CRONOMETRO
+      // clearInterval(contador); //PARAMOS EL CRONOMETRO, LUEGO NO DEJA REINICIAR
       var time = (minut + ":" + segund);
-      window.localStorage.tiempo = time;
+      window.localStorage.ztiempo = time;
 
-      console.log(window.localStorage.Nom);
-      console.log(window.localStorage.tiempo);
+      ranking();
 
-
-
-
-
-
-
+      window.localStorage.removeItem("ztiempo");
 
     }
   }
+
+
+  var topNombre = ["top1Nombre","top2Nombre","top3Nombre","top4Nombre","top5Nombre"];
+  var topTiempo = ["top1Tiempo","top2Tiempo","top3Tiempo","top4Tiempo","top5Tiempo"];
 
   function ranking(){
-    for (var i = 0; i < 5; i++) {
-      if (getItem("name") && getItem("hora")) {
-        setItem((i+"name"), "Ismael")
-        setItem((i+"hora"), "00:00")
+
+
+    for (var i = 0; i < topNombre.length; i++) {
+      if (localStorage.getItem(topNombre[i])) { //SI EXISTE
+        if (localStorage.getItem(topNombre[i]) == window.localStorage.zNom) { //SI TIENE EL MISMO NOMBRE
+          if (localStorage.getItem(topTiempo[i]) >= window.localStorage.ztiempo) { //SI EL NUEVO TIEMPO ES MENOR AL QUE YA TENIA
+            localStorage.setItem(topTiempo[i], window.localStorage.ztiempo); //GUARDO NUEVO TIEMPO
+            mostrarRanking();
+            return true;
+          }
+        }
       }
-      console.log(getItem("name") + " y " + getItem("hora"));
+    }
+
+    for (var i = 0; i < topNombre.length; i++) {
+      if (localStorage.getItem(topTiempo[i]) > window.localStorage.ztiempo) { //SI EL NUEVO TIEMPO ES MENOR AL QUE HAY
+        localStorage.setItem(topNombre[i], window.localStorage.zNom);
+        localStorage.setItem(topTiempo[i], window.localStorage.ztiempo); //GUARDO NUEVO TIEMPO
+        mostrarRanking();
+        return true;
+      }
+    }
+
+    for (var i = 0; i < topNombre.length; i++) {
+      if (!localStorage.getItem(topTiempo[i]) && !localStorage.getItem(topNombre[i])) { //SI EL NUEVO TIEMPO ES MENOR AL QUE HAY
+        localStorage.setItem(topNombre[i], window.localStorage.zNom); //GUARDO NOMBRE
+        localStorage.setItem(topTiempo[i], window.localStorage.ztiempo); //GUARDO NUEVO
+        mostrarRanking();
+        return true;
+      }
     }
   }
-  ranking();
+
+
+
+function mostrarRanking(){
+
+  for (var a = topNombre.length; a > topNombre.length; a--) { //ORDENO
+
+    if (localStorage.getItem(topNombre[a]) && localStorage.getItem(topTiempo[a])) { //SI EXISTE
+      var nombre1 = localStorage.getItem(topNombre[a]);
+      var tiempo1 = localStorage.getItem(topTiempo[a]);
+      if (localStorage.getItem(topNombre[a-1]) && localStorage.getItem(topTiempo[a-1])) { //SI EXISTE EL QUE VA ANTES
+        var nombre2 = localStorage.getItem(topNombre[a-1]);
+        var tiempo2 = localStorage.getItem(topTiempo[a-1]);
+        if (tiempo2 < tiempo1) {
+          localStorage.setItem(topNombre[a], nombre2); //GUARDO NOMBRE
+          localStorage.setItem(topTiempo[a], tiempo2); //GUARDO NUEVO
+
+          localStorage.setItem(topNombre[a-1], nombre1); //GUARDO NOMBRE
+          localStorage.setItem(topTiempo[a-1], tiempo1); //GUARDO NUEVO
+
+        }
+      }
+
+    }
+
+  }
+
+
+  //CREO UNA NUEVA VENTANA
+  var w = window.open("","","height=500 width=500");
+  w.document.write("<center><h1>RANKING</h1>");
+
+  for (var a = 0; a < topNombre.length; a++) {
+    if (localStorage.getItem(topNombre[a]) && localStorage.getItem(topTiempo[a])) { //SI EXISTE
+      w.document.write("<p>TOP " + (a+1) + " Nombre: <b>" + localStorage.getItem(topNombre[a]) + "</b> Tiempo: <b>" + localStorage.getItem(topTiempo[a]) + "</b></p>");
+    }
+  }
+  w.document.write("<br><button onclick='window.close();'>Cerrar ventana</button></center>");
+
+
+}
+
+
+
 
   function saveUser(){
     if (nombre.value == null || nombre.value.trim().length == 0) {
-      var user = "Anonimo";
+      alert("Introduce un nombre valido.");
+      boton.style.backgroundColor = "red";
     }else {
       var user = nombre.value;
+      boton.style.backgroundColor = "lime";
+      nombre.style.fontWeight = "bold";
+      window.localStorage.zNom = user;
     }
-    window.localStorage.Nom = user;
+
   }
-  saveUser();
 
 
 
@@ -110,7 +178,9 @@ document.addEventListener('DOMContentLoaded',function(){
   usuario.onsubmit = function(e){
     e.preventDefault(); //ANULAR EL BOTON
     saveUser();
-    nombre.value = "";
+    nombre.value="";
+    nombre.placeholder = "Nombre correcto";
+
   }
 
 
@@ -219,7 +289,7 @@ document.addEventListener('DOMContentLoaded',function(){
   //CONTADOR SEGUNDOS
   var segund = 0;
   var minut = 0;
-  var contador = setInterval(function(){
+  var contador = setInterval(function test(){
     segundos.innerHTML=++segund;
     if (segund == 60) {
       minutos.innerHTML=++minut;
@@ -231,6 +301,7 @@ document.addEventListener('DOMContentLoaded',function(){
   //BOTON REINICIAR BORRA DATOS
   var formulario = document.forms[0];
   formulario.onsubmit = function(e){
+    e.preventDefault(); //ANULAR EL BOTON
     movi=0;
     aciert=0;
     segund = 0;
@@ -241,7 +312,7 @@ document.addEventListener('DOMContentLoaded',function(){
     aciertos.innerHTML=aciert;
     random(); //VOLVER A CAMBIAR LAS PAREJAS DE SITIO Y DARLES LA VUELTA
 
-    e.preventDefault(); //ANULAR EL BOTON
+
 
   }
 

@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var contDescubiertas = document.getElementsByClassName("descubierta").length;
     if (contDescubiertas == 12) {
       alert("Enorabuena, has descubierto todas las parejas");
-      clearInterval(contador); //PARAMOS EL CRONOMETRO
+      // clearInterval(contador); //PARAMOS EL CRONOMETRO, LUEGO NO DEJA REINICIAR
     }
   }
 
