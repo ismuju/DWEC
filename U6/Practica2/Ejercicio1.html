@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Plantilla básica JQuery Local</title>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function() {
+    		//Aquí puedes programar con JQuery
+        $("button").click(function(){
+          var category = $("#selector").val();
+          var url ="https://api.flickr.com/services/feeds/photos_public.gne?tags=";
+          url += category + "&format=json&jsoncallback=?";
+          $.getJSON(url,function(data,st,xhr){
+            if (st == "success") {
+              var arrayFotos = data.items;
+              $("img").remove();
+              $.each(arrayFotos,function(i, item){
+                // console.log("Imagen nº:" + i + " src= " + item.media.m);
+                var img = $('<img>');
+                img.attr('src', "ajax-loader.gif").appendTo('#imagenes').width("250px").height("150px");
+
+                img.attr('src', item.media.m);
+                return i<9;
+              });
+            }else {
+              alert("ERROR EN LA PETICIÓN");
+            }
+
+
+            $("#load").hide();
+          });
+        });
+
+    	});
+    </script>
+  </head>
+  <body>
+
+    <h1>Mi Flickr</h1>
+
+    <button>Dibujar</button>
+    <select id="selector">
+      <option value="landscapes">Paisajes</option>
+      <option value="cats">Gatetes</option>
+      <option value="dogs">Perro</option>
+      <option value="snake">Serpientes</option>
+      <option value="computer">Ordenador</option>
+      <option value="water">Agua</option>
+      <option value="crypto">Crypto</option>
+    </select>
+
+    <div id="imagenes"></div>
+
+
+    </div>
+
+  </body>
+</html>

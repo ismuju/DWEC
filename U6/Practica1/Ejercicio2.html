@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 2. A partir del ejercicio 1, crea un div para estados de petición, otro para cabeceras y otro
+      // para códigos de estado.
+      //   a. En la zona "Estados de la petición" se debe mostrar en todo momento el estado
+      //   en el que se encuentra la petición (No inicializada, cargando, completada, etc.)
+      //   b. Mostrar el contenido de todas las cabeceras de la respuesta del servidor en la zona
+      //   "Cabeceras HTTP de la respuesta del servidor".
+      //   c. Mostrar el código y texto de estado de la respuesta del servidor en la zona "Código de estado".
+
+      onload = function(){
+        if (window.XMLHttpRequest) {
+          var xhr = new XMLHttpRequest();
+        } else if (ActiveXObject("Microsoft.XMLHTTP")) {
+          var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        var aleatorio = Math.floor(Math.random()*4+1);
+
+
+        var url = "noticia" + aleatorio + ".txt";
+        xhr.open("GET",url,true);
+        xhr.onreadystatechange = muestraResultado;
+        xhr.send();
+
+        function muestraResultado(){
+
+          estados.innerHTML += "<p>" + xhr.readyState + "</p>";
+          cabeceras.innerHTML += "<p>" + xhr.getAllResponseHeaders() + "</p>";
+          codigos.innerHTML += "<p>" + xhr.status + "</p>";
+
+
+          if (xhr.readyState == 4 && xhr.status == 200){
+            resultado.innerHTML = xhr.responseText;
+          }else if (xhr.status != 200) {
+            alert("Error fichero no encontrado (" + xhr.statusText+")");
+          }
+        }
+
+      }
+    </script>
+    <p id="resultado"></p>
+
+    <h1>Estados de la petición</h1>
+    <p id="estados"></p>
+
+    <h1>Cabeceras HTTP de la respuesta del servidor</h1>
+    <p id="cabeceras"></p>
+
+    <h1>Código de estado</h1>
+    <p id="codigos"></p>
+  </body>
+</html>

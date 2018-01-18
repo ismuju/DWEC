@@ -5,7 +5,11 @@
     <title>Ejemplo Recepción GET</title>
     <script type="text/javascript">
       onload = function(){
-      var xhr = new XMLHttpRequest(); //creo una instancia del objeto XMLHttpRequest
+        if (window.XMLHttpRequest) {
+          var xhr = new XMLHttpRequest();
+        } else if (ActiveXObject("Microsoft.XMLHTTP")) {
+          var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
 
       btn.onclick = function(){
         var url = "infoServ.txt";

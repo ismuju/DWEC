@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 1</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // Realiza una web de noticias que muestre por pantalla un contenido solicitado de manera
+      // random de entre 4 titulares posibles, cada vez que se carga.
+      //   a. Prepara un mensaje de error para el usuario en caso de que exista un problema. Comprueba ese caso.
+      //   b. Asegúrate de que la solución proporcionada es compatible con versiones antiguas (6 e inferiores) de IE.
+
+
+      onload = function(){
+        if (window.XMLHttpRequest) {
+          var xhr = new XMLHttpRequest();
+        } else if (ActiveXObject("Microsoft.XMLHTTP")) {
+          var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        var aleatorio = Math.floor(Math.random()*4+1);
+
+
+        var url = "noticia" + aleatorio + ".txt";
+        xhr.open("GET",url,true);
+        xhr.onreadystatechange = muestraResultado;
+        xhr.send();
+
+        function muestraResultado(){
+          if (xhr.readyState == 4 && xhr.status == 200){
+            resultado.innerHTML = xhr.responseText;
+          }else if (xhr.status != 200) {
+            alert("Error fichero no encontrado (" + xhr.statusText+")");
+          }
+        }
+
+      }
+    </script>
+    <p id="resultado"></p>
+  </body>
+</html>
